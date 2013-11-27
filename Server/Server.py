@@ -1,14 +1,10 @@
 __author__ = 'Daniel Roth'
 import zmq
 
+
 #This class is used to manage the settings of the client
 #and runs the server with the configurations he needs.
 #The information will be sent via .............
-def main():
-
-    #Create a new serverinstance
-    serv = Server()
-    serv.asyncsocket(3)
 
 #This Class contains all the server-funktions, the ZeusCLI supports
 class Server():
@@ -16,7 +12,7 @@ class Server():
 
     #This Method runs a REP Socket
     #flow = count of loops
-    def asyncsocket(self, flow):
+    def asyncsocket(self, flow, repsize):
         print "Using 0MQ Reply Socket"
         #Binding the Socket
         context = zmq.Context()
@@ -27,10 +23,21 @@ class Server():
             #Wait for next request from a client
             #A reply is not needed in this case
             message = repsocket.recv()
-            print "message received"
-            repsocket.send(bytes(1))
+            print "message received " + message + " bytes"
+            if repsize == 0:
+                repsocket.send(bytes(1))
+            else:
+                repsocket.send(bytes(repsize))
 
-if __name__ == '__main__':
-    main()
+
+
+
+
+
+
+
+
+
+
 
 
