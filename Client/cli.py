@@ -64,12 +64,12 @@ validator.validate_type(args.type)
 #################################
 
 params = urllib.urlencode({'type': args.type, 'port': args.port})
+print args.type #DELETE THIS LINE!
 headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
 conn = httplib.HTTPConnection("localhost:5000")
 conn.request("POST", "http://localhost:5000/zmq_req", params, headers)
 response = conn.getresponse()
 print response.status
-
 
 
 
