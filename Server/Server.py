@@ -10,9 +10,12 @@ import zmq
 class Server():
     port = "8080"
 
+    def __init__(self, port):
+        self.port = port
+
     #This Method runs a REP Socket
     #flow = count of loops
-    def asyncsocket(self, flow, repsize):
+    def run_asyncsocket(self, flow, repsize):
         print "Using 0MQ Reply Socket"
         #Binding the Socket
         context = zmq.Context()

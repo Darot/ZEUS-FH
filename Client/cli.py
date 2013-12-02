@@ -18,9 +18,12 @@ but in productive usage you could not be able to! Don't use serverclass here!
 USAGE:"""
 
 #Parameter standards:
+httpport = '5000'
 port = '8080'
 ip = 'localhost'
 number_of_clients = 0
+flow = 1
+repsize = 0
 
 #Gloabals
 clientList = [] #Used for multiple clientcounts
@@ -63,11 +66,11 @@ validator.validate_type(args.type)
 # SEND SERVER INSTRUCTIONS      #
 #################################
 
-params = urllib.urlencode({'type': args.type, 'port': args.port})
-print args.type #DELETE THIS LINE!
+params = urllib.urlencode({'type': args.type, 'port': args.port, 'flow': flow, 'repsize': repsize})
 headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
-conn = httplib.HTTPConnection("localhost:5000")
-conn.request("POST", "http://localhost:5000/zmq_req", params, headers)
+conn = httplib.HTTPConnection(ip + ":" + httpport)
+print "http://" + ip + ":" + httpport + "/" + str(args.type) #DELETE THIS!
+conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
 response = conn.getresponse()
 print response.status
 

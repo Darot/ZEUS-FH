@@ -18,8 +18,6 @@ class client():
         context = zmq.Context()
         reqsocket = context.socket(zmq.REQ)
         reqsocket.connect("tcp://" + self.ip + ":" + self.port)
-        #REMOVE THIS LINE !!!
-        print ("tcp://" + self.ip + self.port)
         #send requests
         for i in range(flow):
             print "sending a request"
