@@ -71,6 +71,8 @@ headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/
 conn = httplib.HTTPConnection(ip + ":" + httpport)
 print "http://" + ip + ":" + httpport + "/" + str(args.type) #DELETE THIS!
 conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
+client1 = client()
+client1.sendAsync(99999999, 1024)
 response = conn.getresponse()
 print response.status
 
@@ -83,5 +85,3 @@ print response.status
 
 
 #create a new clientinstance
-#client1 = client()
-#client1.sendAsync(3, 1024)
