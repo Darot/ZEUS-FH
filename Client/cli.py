@@ -6,10 +6,12 @@ import argparse
 
 import zmq
 
-from Client import client
+from Client import Client
 from Validator import Validator
 
 import httplib, urllib
+
+import time
 
 """
 This is the Zeus CLI, it is used to generate traffic via TCP wit 0MQ and Websockets.
@@ -28,6 +30,8 @@ number_of_clients = 0
 flow = 2
 repsize = 0
 type = None
+client_count = 1
+size = 0
 
 #Gloabals
 clientList = [] #Used for multiple clientcounts
@@ -43,6 +47,7 @@ argparser.add_argument('-p', '--port', help="Port of the destination server. Def
 argparser.add_argument('-i', '--target_ip', help="Ipv4 Aadress of the destination Server.", required=False)
 argparser.add_argument('-t', '--type', help="Type of protocol.E.g.: zmq_req, zmq_sub, http_get.", required=True)
 argparser.add_argument('-s', '--size', help="Size of message in byte", required=True)
+argparser.add_argument('-c', '--client_count', help="Count of sending clients", required=False)
 
 #Read params
 args = argparser.parse_args()
@@ -65,6 +70,10 @@ if args.port is not None:
 validator.validate_type(args.type)
 type = args.type
 
+#validate an set size
+validator.validate_size(int(args.size))
+size = args.size
+
 #validate and set ip
 if args.target_ip is not None:
     validator.validate_ip(args.target_ip)
@@ -82,8 +91,8 @@ def configure_req():
     conn = httplib.HTTPConnection(ip + ":" + httpport)
     print "http://" + ip + ":" + httpport + "/" + str(args.type)
     conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
-    client1 = client()
-    client1.sendAsync(flow, repsize)
+    client = Client()
+    client.sendAsync(flow, size)
     response = conn.getresponse()
     print response.status
 

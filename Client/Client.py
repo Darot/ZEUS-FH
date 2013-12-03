@@ -1,7 +1,7 @@
 __author__ = 'Daniel Roth'
 import zmq
 
-class client():
+class Client():
     port = "8080"
     ip = "localhost"
 

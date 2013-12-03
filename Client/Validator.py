@@ -23,3 +23,7 @@ class Validator():
             sys.exit("Invalid Ip-Adress")
         except socket.error:
             sys.exit("Invalid IP-Address")
+
+    def validate_size(self, size):
+        if not 1 < size < 30000:
+            sys.exit("Invalid size! max. 30000")
