@@ -1,4 +1,7 @@
 __author__ = 'Daniel Roth'
+
+import sys
+
 import argparse
 
 import zmq
@@ -22,12 +25,12 @@ httpport = '5000'
 port = '8080'
 ip = 'localhost'
 number_of_clients = 0
-flow = 1
+flow = 2
 repsize = 0
+type = None
 
 #Gloabals
 clientList = [] #Used for multiple clientcounts
-type = ''
 
 
 
@@ -37,7 +40,7 @@ argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus N
 #################################
 
 argparser.add_argument('-p', '--port', help="Port of the destination server. Default: 8080", required=False)
-argparser.add_argument('-i', '--target', help="Ipv4 Aadress of the destination Server.", required=False)
+argparser.add_argument('-i', '--target_ip', help="Ipv4 Aadress of the destination Server.", required=False)
 argparser.add_argument('-t', '--type', help="Type of protocol.E.g.: zmq_req, zmq_sub, http_get.", required=True)
 argparser.add_argument('-s', '--size', help="Size of message in byte", required=True)
 
@@ -53,35 +56,39 @@ args = argparser.parse_args()
 validator = Validator()
 
 #validate and set Port
+#if port is not set manually use standard
 if args.port is not None:
-    print args.port
     validator.validate_port(int(args.port))
     port = args.port
 
-#validate type
+#validate and set type
 validator.validate_type(args.type)
+type = args.type
+
+#validate and set ip
+if args.target_ip is not None:
+    validator.validate_ip(args.target_ip)
+
+print "Trying to configure server ... on Port " + port
+
 
 
 #################################
 # SEND SERVER INSTRUCTIONS      #
 #################################
-
-params = urllib.urlencode({'type': args.type, 'port': args.port, 'flow': flow, 'repsize': repsize})
-headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
-conn = httplib.HTTPConnection(ip + ":" + httpport)
-print "http://" + ip + ":" + httpport + "/" + str(args.type) #DELETE THIS!
-conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
-client1 = client()
-client1.sendAsync(99999999, 1024)
-response = conn.getresponse()
-print response.status
-
-
+def configure_req():
+    params = urllib.urlencode({'type': type, 'port': port, 'flow': flow, 'repsize': repsize})
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
+    conn = httplib.HTTPConnection(ip + ":" + httpport)
+    print "http://" + ip + ":" + httpport + "/" + str(args.type)
+    conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
+    client1 = client()
+    client1.sendAsync(flow, repsize)
+    response = conn.getresponse()
+    print response.status
 
 
-#################################
-# INITIALIZE CLIENT(s)          #
-#################################
-
-
-#create a new clientinstance
+#This is a functionmap that calls a function by type
+functionMap = {"zmq_req": configure_req}
+functionToCall = functionMap[type]
+functionToCall()

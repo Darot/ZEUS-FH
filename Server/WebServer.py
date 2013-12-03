@@ -8,16 +8,20 @@ import time
 app = Flask(__name__)
 args = None
 
-def run_async():
+
+def run_async(port, flow, repsize):
     print request.form['type']
-    server = Server('8080')
-    server.run_asyncsocket(99999999, 1)
+    server = Server(port)
+    server.run_asyncsocket(int(flow), int(repsize))
     time.sleep(1)
 
 
+
+#Trigger on a Request for a ZMQ reply socket
+#the client will be a request socket
 @app.route("/zmq_req", methods=['POST'])
 def zmq_req_starter():
-    run_async()
+    run_async(request.form["port"], request.form["flow"], request.form["repsize"])
     return 'initialising'
 
 if __name__ == "__main__":
