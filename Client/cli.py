@@ -11,6 +11,8 @@ from Validator import Validator
 
 import httplib, urllib
 
+import thread
+
 import time
 
 """
@@ -27,16 +29,13 @@ httpport = '5000'
 port = '8080'
 ip = 'localhost'
 number_of_clients = 0
-flow = 2
+flow = 5
 repsize = 0
 type = None
-client_count = 1
+client_count = 2
 size = 0
 
-#Gloabals
-clientList = [] #Used for multiple clientcounts
-
-
+#Gloab
 
 argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus Networktool')
 #################################
@@ -74,25 +73,32 @@ type = args.type
 validator.validate_size(int(args.size))
 size = args.size
 
+#validate client count
+if args.client_count is not None:
+    validator.validate_client_count(int(args.client_count))
+    client_count = int(args.client_count)
+
 #validate and set ip
 if args.target_ip is not None:
     validator.validate_ip(args.target_ip)
+    ip = args.target_ip
 
 print "Trying to configure server ... on Port " + port
-
+time.sleep(1)
 
 
 #################################
 # SEND SERVER INSTRUCTIONS      #
 #################################
 def configure_req():
-    params = urllib.urlencode({'type': type, 'port': port, 'flow': flow, 'repsize': repsize})
+    params = urllib.urlencode({'type': type, 'port': port, 'flow': flow*client_count, 'repsize': repsize})
     headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
     conn = httplib.HTTPConnection(ip + ":" + httpport)
     print "http://" + ip + ":" + httpport + "/" + str(args.type)
     conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
-    client = Client()
-    client.sendAsync(flow, size)
+    for i in range(client_count):
+        client = Client()
+        thread.start_new_thread(client.sendAsync, (flow, size))
     response = conn.getresponse()
     print response.status
 

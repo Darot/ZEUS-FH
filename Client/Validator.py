@@ -25,5 +25,9 @@ class Validator():
             sys.exit("Invalid IP-Address")
 
     def validate_size(self, size):
-        if not 1 < size < 30000:
+        if not 0 < size < 30001:
             sys.exit("Invalid size! max. 30000")
+
+    def validate_client_count(self, client_count):
+        if not 0 < client_count < 51:
+            sys.exit("Invalid client count! max. 50")

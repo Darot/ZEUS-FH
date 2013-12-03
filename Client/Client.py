@@ -1,7 +1,14 @@
 __author__ = 'Daniel Roth'
 import zmq
 
-class Client():
+import threading
+from thread import allocate_lock
+import datetime
+
+#GLOBALS
+lock = allocate_lock()
+
+class Client(threading.Thread):
     port = "8080"
     ip = "localhost"
 
@@ -12,7 +19,6 @@ class Client():
         self.ip = ip
 
     #This function sends a Message to a REP Socket
-    #Flow = Count of loops
     def sendAsync(self, flow, size):
         #Connecting the Socket
         context = zmq.Context()
@@ -20,8 +26,13 @@ class Client():
         reqsocket.connect("tcp://" + self.ip + ":" + self.port)
         #send requests
         for i in range(flow):
-            print "sending a request"
+            now = str(datetime.datetime.now())
+            lock.acquire()
+            print "sending a request" + self.getName() + " " + now
+            lock.release()
             reqsocket.send(bytes(size))
             #no reply is needed
             message = reqsocket.recv()
-            print "received reply " + message + " bytes"
+            lock.acquire()
+            print "received reply " + message + " bytes in " + self.getName()
+            lock.release()
