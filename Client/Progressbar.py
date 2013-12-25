@@ -26,6 +26,7 @@ class Progressbar():
 
     def update_progress(self):
             self.state += 1
-            progress = self.max / 100 * self.state
+            progress = 100.0 / float(self.max) * self.state
+            progress = int(progress)
             sys.stdout.write('\r[{0}{1}] {2}'.format('#'*(progress/10), ' '*(10-progress/10), progress))
             sys.stdout.flush()
