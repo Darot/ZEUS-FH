@@ -8,6 +8,7 @@ import zmq
 
 from Client import Client
 from Validator import Validator
+from Progressbar import Progressbar
 
 import httplib, urllib
 
@@ -21,7 +22,7 @@ The CLI sets up, configures an runs a client.
 It will not setup the server but it allows to configure the server anyway by sending
 it all the information it needs via HTTP.
 REMEBER!!!! While you are working on this CLI you are able to access the serverclass,
-but in productive usage you could not be able to! Don't use serverclass here!
+but in productive usage you could not be able to! Don't use the serverclass here!
 USAGE:"""
 
 #Parameter standards:
@@ -45,11 +46,14 @@ argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus N
 
 argparser.add_argument('-p', '--port', help="Port of the destination server. Default: 8080", required=False)
 argparser.add_argument('-i', '--target_ip', help="Ipv4 Aadress of the destination Server.", required=False)
-argparser.add_argument('-t', '--type', help="Type of protocol.E.g.: zmq_req, zmq_sub, http_get.", required=True)
-argparser.add_argument('-s', '--size', help="Size of message in byte", required=True)
+argparser.add_argument('-t', '--type', help="Type of protocol.E.g.: zmq_req, zmq_sub, http_get.", required=False)
+argparser.add_argument('-s', '--size', help="Size of message in byte", required=False)
 argparser.add_argument('-c', '--client_count', help="Count of sending clients", required=False)
 argparser.add_argument('-d', '--delay', help="Delay between Messages (seconds)", required=False)
 argparser.add_argument('-f', '--flows', help="Count of flows", required=False)
+
+argparser.add_argument('--save', help="Save current parameterset in a config file", required=False)
+argparser.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
 
 #Read params
 args = argparser.parse_args()
@@ -63,7 +67,6 @@ args = argparser.parse_args()
 validator = Validator()
 
 #validate and set Port
-#if port is not set manually use standard
 if args.port is not None:
     validator.validate_port(int(args.port))
     port = args.port
@@ -102,8 +105,10 @@ time.sleep(2)
 
 #################################
 # SEND SERVER INSTRUCTIONS      #
+# AND RUN CLIENT                #
 #################################
 def run_req():
+    p = Progressbar(flow*client_count)
     params = urllib.urlencode({'type': type,
                                'port': port, 'flow': flow*client_count,
                                'repsize': repsize})
@@ -115,7 +120,7 @@ def run_req():
     print "http://" + ip + ":" + httpport + "/" + str(args.type)
     conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
     for i in range(client_count):
-        client = Client()
+        client = Client(p)
         thread.start_new_thread(client.sendAsync, (flow, size, delay))
     response = conn.getresponse()
     if response.status == 200:
@@ -128,4 +133,3 @@ def run_req():
 functionMap = {"zmq_req": run_req}
 functionToCall = functionMap[type]
 functionToCall()
-

@@ -6,7 +6,7 @@ import zmq
 #and runs the server with the configurations he needs.
 #The information will be sent via .............
 
-#This Class contains all the server-funktions, the ZeusCLI supports
+#This Class contains all the server-functions, the ZeusCLI supports
 class Server():
     port = "8080"
 
