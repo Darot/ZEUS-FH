@@ -2,12 +2,16 @@ __author__ = 'Daniel Roth'
 import zmq
 
 
-#This class is used to manage the settings of the client
-#and runs the server with the configurations he needs.
-#The information will be sent via .............
 
-#This Class contains all the server-functions, the ZeusCLI supports
 class Server():
+    """
+    This class is used to manage the settings given by a client
+    and runs the server with the configurations he needs.
+    The information will be sent via HTTP and Handled via Flask WSGI.
+
+    This Class contains all the server-functions, the ZeusCLI supports
+    """
+
     port = "8080"
 
     def __init__(self, port):

@@ -14,7 +14,7 @@ lock = allocate_lock()
 
 class Progressbar():
     '''
-    This is a Threadsafe ascii command-line progress bar
+    This is an ascii command-line progress bar
     That is used to show progress in longterm loops
     max = 100%
     state = loops done

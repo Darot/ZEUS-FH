@@ -9,6 +9,7 @@ import zmq
 from Client import Client
 from Validator import Validator
 from Progressbar import Progressbar
+from ClientConfigurator import ClientConfigurator
 
 import httplib, urllib
 
@@ -25,11 +26,10 @@ REMEBER!!!! While you are working on this CLI you are able to access the serverc
 but in productive usage you could not be able to! Don't use the serverclass here!
 USAGE:"""
 
-#Parameter standards:
+#Standard values
 httpport = '5000'
 port = '8080'
 ip = 'localhost'
-number_of_clients = 0
 flow = 1
 repsize = 0
 type = None
@@ -72,12 +72,14 @@ if args.port is not None:
     port = args.port
 
 #validate and set type
-validator.validate_type(args.type)
-type = args.type
+if args.type is not None:
+    validator.validate_type(args.type)
+    type = args.type
 
 #validate an set size
-validator.validate_size(int(args.size))
-size = args.size
+if args.size is not None:
+    validator.validate_size(int(args.size))
+    size = args.size
 
 #validate an set client count
 if args.client_count is not None:
@@ -97,9 +99,20 @@ if args.delay is not None:
 if args.flows is not None:
     flow = int(args.flows)
 
-print "Trying to configure server ... on Port " + port
-print "abort with Ctrl-C"
-time.sleep(2)
+
+#################################
+# Save / Load configuration     #
+#################################
+
+if args.save is not None:
+    c = ClientConfigurator()
+    c.write_config(args.save, port, httpport, ip, flow, repsize, type, client_count, size, delay)
+
+if args.config is not None:
+    c = ClientConfigurator()
+    if c.check_exists(args.config) is False:
+         print "No configuration named " + args.config + " found!"
+
 
 
 
@@ -129,7 +142,11 @@ def run_req():
         print "Something went wrong!"
 
 
-#This is a functionmap that calls a function by type
-functionMap = {"zmq_req": run_req}
-functionToCall = functionMap[type]
-functionToCall()
+if type is not None:
+    print "Trying to configure server ... on Port " + port
+    print "abort with Ctrl-C"
+    time.sleep(2)
+    #This is a functionmap that calls a function by type
+    functionMap = {"zmq_req": run_req}
+    functionToCall = functionMap[type]
+    functionToCall()

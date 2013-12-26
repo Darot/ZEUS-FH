@@ -34,13 +34,8 @@ class Client(threading.Thread):
         for i in range(flow):
             time.sleep(delay)
             now = str(datetime.datetime.now())
-            lock.acquire()
-            # print "sending a request" + self.getName() + " " + now
-            lock.release()
             reqsocket.send(bytes(size))
-            #no reply is needed
             message = reqsocket.recv()
             lock.acquire()
-            # print "received reply " + message + " bytes in " + self.getName()
             self.progress.update_progress()
             lock.release()
