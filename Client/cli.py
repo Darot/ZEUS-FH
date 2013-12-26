@@ -120,7 +120,7 @@ if args.flows is not None:
     flow = int(args.flows)
 
 
-if args.save is not None:
+if args.save is not None and args.config:
     c = ClientConfigurator()
     if c.check_exists(args.save):
          print Fore.RED + "A configuration named " + args.save + " already exists!" + Fore.RESET

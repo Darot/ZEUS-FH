@@ -1,6 +1,7 @@
 __author__ = 'Gregor Milenkovic / Daniel Roth'
 import ConfigParser
 import os.path
+from tabulate import tabulate
 
 class ClientConfigurator():
 
@@ -54,6 +55,13 @@ class ClientConfigurator():
             print "\033[1;48mA configuration named " + filename + " already exists!\33[1;m"
 
     def load_config(self, filename):
+        '''
+        Reads a configuration file and returns the values in a dictionary.
+        @param filename:
+        @return: dict{port: value, httpport : value, ip : value
+          flow: value, repsize : value, type : value, client_count : value
+          size : value, delay: value}
+        '''
         self.config.read("./Config/" + filename + ".ini")
         params = { "port" : self.config.get('Settings', 'port'),
                    "httpport" : self.config.get('Settings', 'httpport'),
@@ -65,3 +73,11 @@ class ClientConfigurator():
                    "size" : self.config.get('Settings', 'size'),
                    "delay" : self.config.get('Settings', 'delay') }
         return params
+
+    def print_config(self, filename):
+        params = self.load_config(filename)
+        params = params.items()
+        print tabulate(params)
+
+c = ClientConfigurator()
+c.print_config("tester")
