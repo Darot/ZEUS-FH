@@ -18,6 +18,8 @@ import thread
 
 import time
 
+import sys
+
 """
 This is the Zeus CLI, it is used to generate traffic via TCP wit 0MQ and Websockets.
 The CLI sets up, configures an runs a client.
@@ -56,15 +58,24 @@ argparser.add_argument('-f', '--flows', help="Count of flows", required=False)
 
 argparser.add_argument('--save', help="Save current parameterset in a config file", required=False)
 argparser.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
+argparser.add_argument('--print_config', help="Print a saved configuration file", required=False)
 
 #Read params
 args = argparser.parse_args()
+
+if args.print_config is not None:
+    c = ClientConfigurator()
+    if c.check_exists(args.print_config) is False:
+         print Fore.RED + "No configuration named " + args.print_config + " found!" + Fore.RESET
+    else:
+        c.print_config(args.print_config)
+        sys.exit()
 
 
 if args.config is not None:
     c = ClientConfigurator()
     if c.check_exists(args.config) is False:
-         print "No configuration named " + args.config + " found!"
+         print Fore.RED + "No configuration named " + args.print_config + " found!" + Fore.RESET
     else:
         params = c.load_config(args.config)
         #set loaded params

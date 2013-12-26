@@ -78,6 +78,3 @@ class ClientConfigurator():
         params = self.load_config(filename)
         params = params.items()
         print tabulate(params)
-
-c = ClientConfigurator()
-c.print_config("tester")
