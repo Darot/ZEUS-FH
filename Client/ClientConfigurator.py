@@ -12,7 +12,7 @@ class ClientConfigurator():
         @param filename:
         @return: True/False
         '''
-        if os.path.isfile(filename + ".ini"):
+        if os.path.isfile("./Config/" + filename + ".ini"):
             return True
         else:
             return False
@@ -39,7 +39,7 @@ class ClientConfigurator():
         try:
             configfile = open("./Config/" + filename + ".ini", 'w')
             self.config.add_section('Settings')
-            self.config.set('Settings', 'Port', port)
+            self.config.set('Settings', 'port', port)
             self.config.set('Settings', 'httpport', httpport)
             self.config.set('Settings', 'ip', ip)
             self.config.set('Settings', 'flow', flow)
@@ -51,5 +51,17 @@ class ClientConfigurator():
             self.config.write(configfile)
             configfile.close()
         except:
-            print "A configuration name " + filename + " already exists!"
+            print "\033[1;48mA configuration named " + filename + " already exists!\33[1;m"
 
+    def load_config(self, filename):
+        self.config.read("./Config/" + filename + ".ini")
+        params = { "port" : self.config.get('Settings', 'port'),
+                   "httpport" : self.config.get('Settings', 'httpport'),
+                   "ip" : self.config.get('Settings', 'ip'),
+                   "flow" : self.config.get('Settings', 'flow'),
+                   "repsize" : self.config.get('Settings', 'repsize'),
+                   "type" : self.config.get('Settings', 'type'),
+                   "client_count" : self.config.get('Settings', 'client_count'),
+                   "size" : self.config.get('Settings', 'size'),
+                   "delay" : self.config.get('Settings', 'delay') }
+        return params

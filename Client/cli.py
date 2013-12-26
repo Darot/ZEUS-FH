@@ -3,6 +3,7 @@ __author__ = 'Daniel Roth'
 import sys
 
 import argparse
+from colorama import init, Fore, Back, Style
 
 import zmq
 
@@ -25,7 +26,8 @@ it all the information it needs via HTTP.
 REMEBER!!!! While you are working on this CLI you are able to access the serverclass,
 but in productive usage you could not be able to! Don't use the serverclass here!
 USAGE:"""
-
+#colorama
+init()
 #Standard values
 httpport = '5000'
 port = '8080'
@@ -57,6 +59,24 @@ argparser.add_argument('--config', help="Load a saved parameterset from a config
 
 #Read params
 args = argparser.parse_args()
+
+
+if args.config is not None:
+    c = ClientConfigurator()
+    if c.check_exists(args.config) is False:
+         print "No configuration named " + args.config + " found!"
+    else:
+        params = c.load_config(args.config)
+        #set loaded params
+        args.port = params["port"]
+        httpport = params["httpport"]
+        ip = params["ip"]
+        args.flows = params["flow"]
+        repsize = params["repsize"]
+        args.type = params["type"]
+        args.client_count = params["client_count"]
+        args.size = params["size"]
+        args.delay = params["delay"]
 
 
 #################################
@@ -100,20 +120,13 @@ if args.flows is not None:
     flow = int(args.flows)
 
 
-#################################
-# Save / Load configuration     #
-#################################
-
 if args.save is not None:
     c = ClientConfigurator()
-    c.write_config(args.save, port, httpport, ip, flow, repsize, type, client_count, size, delay)
-
-if args.config is not None:
-    c = ClientConfigurator()
-    if c.check_exists(args.config) is False:
-         print "No configuration named " + args.config + " found!"
-
-
+    if c.check_exists(args.save):
+         print Fore.RED + "A configuration named " + args.save + " already exists!" + Fore.RESET
+    else:
+        c.write_config(args.save, port, httpport, ip, flow, repsize, type,
+                       client_count, size, delay)
 
 
 #################################
