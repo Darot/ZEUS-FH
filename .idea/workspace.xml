@@ -25,24 +25,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5077419">
       <split-first>
         <leaf>
-          <file leaf-file-name="Validator.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="Validator.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Client/Validator.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="23" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="684">
-                  <folding>
-                    <element signature="e#27#37#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="cli.py" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Client/cli.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="77" column="96" selection-start="2640" selection-end="2640" vertical-scroll-proportion="0.6985075" vertical-offset="918" max-vertical-offset="3258">
-                  <folding>
-                    <element signature="e#28#38#0" expanded="true" />
-                  </folding>
+                <state line="30" column="0" selection-start="797" selection-end="797" vertical-scroll-proportion="0.76427525" vertical-offset="0" max-vertical-offset="684">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -56,6 +43,17 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="cli.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Client/cli.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="147" column="14" selection-start="4716" selection-end="4716" vertical-scroll-proportion="0.0" vertical-offset="1998" max-vertical-offset="3276">
+                  <folding>
+                    <element signature="e#51#66#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -63,7 +61,7 @@
           <file leaf-file-name="WebServer.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="29" column="27" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="630">
+                <state line="28" column="20" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
                   <folding />
                 </state>
               </provider>
@@ -72,10 +70,8 @@
           <file leaf-file-name="Server.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Server/Server.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="9" column="69" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1008">
-                  <folding>
-                    <marker date="1388061380324" expanded="true" signature="61:336" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                  </folding>
+                <state line="33" column="28" selection-start="967" selection-end="967" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -83,10 +79,8 @@
           <file leaf-file-name="ClientConfigurator.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Client/ClientConfigurator.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="79" column="30" selection-start="2934" selection-end="2934" vertical-scroll-proportion="0.838806" vertical-offset="860" max-vertical-offset="1530">
-                  <folding>
-                    <element signature="e#47#66#0" expanded="true" />
-                  </folding>
+                <state line="83" column="31" selection-start="3010" selection-end="3010" vertical-scroll-proportion="0.8119403" vertical-offset="914" max-vertical-offset="1584">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -94,7 +88,7 @@
           <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Client/Client.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="33" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="828">
+                <state line="17" column="33" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="702">
                   <folding />
                 </state>
               </provider>
@@ -115,13 +109,15 @@
         <option value="$PROJECT_DIR$/Client/client.py" />
         <option value="$PROJECT_DIR$/Server/webserver.py" />
         <option value="$PROJECT_DIR$/Client/ServerConfigurator.py" />
-        <option value="$PROJECT_DIR$/Client/Validator.py" />
         <option value="$PROJECT_DIR$/Server/WebServer.py" />
         <option value="$PROJECT_DIR$/Client/Client.py" />
         <option value="$PROJECT_DIR$/Client/Progressbar.py" />
         <option value="$PROJECT_DIR$/Server/Server.py" />
-        <option value="$PROJECT_DIR$/Client/ClientConfigurator.py" />
+        <option value="$PROJECT_DIR$/Client/Validator.py" />
+        <option value="$PROJECT_DIR$/Client/zeus.sh" />
+        <option value="$PROJECT_DIR$/Client/zeus.cmd" />
         <option value="$PROJECT_DIR$/Client/cli.py" />
+        <option value="$PROJECT_DIR$/Client/ClientConfigurator.py" />
       </list>
     </option>
   </component>
@@ -157,7 +153,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -200,6 +195,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -207,8 +203,8 @@
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -422,15 +418,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/Server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="45" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="780">
-          <folding>
-            <marker date="1388061380324" expanded="true" signature="61:336" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
@@ -448,9 +435,7 @@
     <entry file="file://$PROJECT_DIR$/Client/Validator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="70" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="378">
-          <folding>
-            <element signature="e#27#37#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -458,7 +443,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="43" selection-start="2085" selection-end="2085" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="1620">
           <folding>
-            <element signature="e#28#38#0" expanded="true" />
+            <element signature="e#51#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -466,9 +451,7 @@
     <entry file="file://$PROJECT_DIR$/Server/Server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="0" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="882">
-          <folding>
-            <marker date="1388061380324" expanded="true" signature="61:336" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -489,35 +472,17 @@
         <state line="13" column="29" selection-start="479" selection-end="479" vertical-scroll-proportion="0.34925374" vertical-offset="0" max-vertical-offset="670" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="27" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="69" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
-          <folding>
-            <marker date="1388061380324" expanded="true" signature="61:336" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-          </folding>
+        <state line="33" column="28" selection-start="967" selection-end="967" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="33" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="792">
+        <state line="17" column="33" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="702">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Validator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="23" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
-          <folding>
-            <element signature="e#27#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,21 +493,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/ClientConfigurator.py">
+    <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="30" selection-start="2934" selection-end="2934" vertical-scroll-proportion="0.838806" vertical-offset="860" max-vertical-offset="1530">
-          <folding>
-            <element signature="e#47#66#0" expanded="true" />
-          </folding>
+        <state line="28" column="20" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/cli.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="96" selection-start="2640" selection-end="2640" vertical-scroll-proportion="0.6985075" vertical-offset="918" max-vertical-offset="3258">
+        <state line="147" column="14" selection-start="4716" selection-end="4716" vertical-scroll-proportion="0.0" vertical-offset="1998" max-vertical-offset="3276">
           <folding>
-            <element signature="e#28#38#0" expanded="true" />
+            <element signature="e#51#66#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/ClientConfigurator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="31" selection-start="3010" selection-end="3010" vertical-scroll-proportion="0.8119403" vertical-offset="914" max-vertical-offset="1584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Validator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="797" selection-end="797" vertical-scroll-proportion="0.76427525" vertical-offset="0" max-vertical-offset="684">
+          <folding />
         </state>
       </provider>
     </entry>

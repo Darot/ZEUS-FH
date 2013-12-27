@@ -1,11 +1,8 @@
+#! /usr/bin/env python
 __author__ = 'Daniel Roth'
-
-import sys
 
 import argparse
 from colorama import init, Fore, Back, Style
-
-import zmq
 
 from Client import Client
 from Validator import Validator
@@ -41,24 +38,25 @@ client_count = 1
 size = 0
 delay = 0
 
-#Gloab
-
 argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus Networktool')
 #################################
 # SUPPORTED ARGUMENTS           #
 #################################
+group = argparser.add_argument_group()
+group_mute = argparser.add_mutually_exclusive_group()
 
-argparser.add_argument('-p', '--port', help="Port of the destination server. Default: 8080", required=False)
-argparser.add_argument('-i', '--target_ip', help="Ipv4 Aadress of the destination Server.", required=False)
-argparser.add_argument('-t', '--type', help="Type of protocol.E.g.: zmq_req, zmq_sub, http_get.", required=False)
-argparser.add_argument('-s', '--size', help="Size of message in byte", required=False)
-argparser.add_argument('-c', '--client_count', help="Count of sending clients", required=False)
-argparser.add_argument('-d', '--delay', help="Delay between Messages (seconds)", required=False)
-argparser.add_argument('-f', '--flows', help="Count of flows", required=False)
+group.add_argument('-p', '--port', help="Port of the destination server. Default: 8080", required=False)
+group.add_argument('-i', '--target_ip', help="Ipv4 Aadress of the destination Server.", required=False)
+group.add_argument('-t', '--type', help="Type of protocol.E.g.: zmq_req, zmq_sub, http_get.", required=False)
+group.add_argument('-s', '--size', help="Size of message in byte", required=False)
+group.add_argument('-c', '--client_count', help="Count of sending clients", required=False)
+group.add_argument('-d', '--delay', help="Delay between Messages (seconds)", required=False)
+group.add_argument('-f', '--flows', help="Count of flows", required=False)
+group.add_argument('-r', '--reply_size', help="Size of replies in bytes", required=False)
 
-argparser.add_argument('--save', help="Save current parameterset in a config file", required=False)
-argparser.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
-argparser.add_argument('--print_config', help="Print a saved configuration file", required=False)
+group.add_argument('--save', help="Save current parameterset in a config file", required=False)
+group_mute.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
+group_mute.add_argument('--print_config', help="Print a saved configuration file", required=False)
 
 #Read params
 args = argparser.parse_args()
@@ -89,13 +87,16 @@ if args.config is not None:
         args.size = params["size"]
         args.delay = params["delay"]
 
-
 #################################
 # VALIDATION                    #
 #################################
 
 #create a new Validator and validate Params
 validator = Validator()
+
+#validate replysize
+if args.reply_size is not None:
+    repsize = args.reply_size
 
 #validate and set Port
 if args.port is not None:
@@ -131,7 +132,7 @@ if args.flows is not None:
     flow = int(args.flows)
 
 
-if args.save is not None and args.config:
+if args.save is not None:
     c = ClientConfigurator()
     if c.check_exists(args.save):
          print Fore.RED + "A configuration named " + args.save + " already exists!" + Fore.RESET

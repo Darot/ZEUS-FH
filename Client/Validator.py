@@ -4,6 +4,7 @@ import socket
 
 
 class Validator():
+
     def validate_port(self, port):
         if not 80 < port < 9999:
             sys.exit("Invalid port! Port must be between 80 and 9999")
