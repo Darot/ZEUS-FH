@@ -12,9 +12,7 @@ from ClientConfigurator import ClientConfigurator
 import httplib, urllib
 
 import thread
-
 import time
-
 import sys
 
 """
@@ -35,7 +33,7 @@ flow = 1
 repsize = 0
 type = None
 client_count = 1
-size = 0
+size = 1
 delay = 0
 
 argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus Networktool')
@@ -166,12 +164,19 @@ def run_req():
     else:
         print "Something went wrong!"
 
+def run_http_post():
+    #initialize a progressbar
+    p = Progressbar(flow*client_count)
+    for i in range(client_count):
+        client = Client(p)
+        thread.start_new_thread(client.send_http_post, (ip, httpport, flow, delay, size))
+
 
 if type is not None:
     print "Trying to configure server ... on Port " + port
     print "abort with Ctrl-C"
     time.sleep(2)
     #This is a functionmap that calls a function by type
-    functionMap = {"zmq_req": run_req}
+    functionMap = {"zmq_req": run_req, "http_post": run_http_post}
     functionToCall = functionMap[type]
     functionToCall()

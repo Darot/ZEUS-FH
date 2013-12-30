@@ -4,6 +4,8 @@ from flask import Flask
 from flask import request
 from Server import Server
 
+import sys
+
 import time
 
 app = Flask(__name__)
@@ -24,6 +26,11 @@ def run_async(port, flow, repsize):
 def zmq_req_starter():
     run_async(request.form["port"], request.form["flow"], request.form["repsize"])
     return 'initialising'
+
+@app.route("/http_post", methods=['POST'])
+def http_post():
+    #print sys.getsizeof(request)
+    return 'file received'
 
 if __name__ == "__main__":
     app.debug = True
