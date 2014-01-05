@@ -5,13 +5,16 @@ import threading
 from thread import allocate_lock
 import datetime
 import time
-from subprocess import call
+
 
 import httplib
 
 from poster.encode import multipart_encode
 from poster.streaminghttp import register_openers
 import urllib2
+
+from subprocess import call
+
 #GLOBALS
 lock = allocate_lock()
 
@@ -63,12 +66,11 @@ class Client(threading.Thread):
         @param delay:
         @return: True / False (Success / Fail)
         '''
-
         # Register the streaming http handlers with urllib2
         register_openers()
+        process = call(["./filemaker/filemaker", size])
         # Run Filemaker (a c program for filemaking by size)
         # A file with the given size(byte) will be stored in /tmp/size
-        call("./filemaker/filemaker", size)
         # headers contains the necessary Content-Type and Content-Length
         # datagen is a generator object that yields the encoded parameters
         datagen, headers = multipart_encode({"file": open("/tmp/size", "rb")})
@@ -76,10 +78,10 @@ class Client(threading.Thread):
         for i in range(flow):
             time.sleep(delay)
             request = urllib2.Request("http://" + ip + ":" + httpport + "/http_post", datagen, headers)
-            lock.acquire()
+            #lock.acquire()
             if urllib2.urlopen(request).code is not 200:
                 print "Something went wrong! Maybe the Server is not running?"
                 return False
             self.progress.update_progress()
-            lock.release()
+            #lock.release()
         return True

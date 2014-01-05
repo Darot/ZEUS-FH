@@ -9,6 +9,8 @@ from Validator import Validator
 from Progressbar import Progressbar
 from ClientConfigurator import ClientConfigurator
 
+from subprocess import call
+
 import httplib, urllib
 
 import thread
@@ -167,9 +169,8 @@ def run_req():
 def run_http_post():
     #initialize a progressbar
     p = Progressbar(flow*client_count)
-    for i in range(client_count):
-        client = Client(p)
-        thread.start_new_thread(client.send_http_post, (ip, httpport, flow, delay, size))
+    client = Client(p)
+    client.send_http_post(ip, httpport, flow, delay, size)
 
 
 if type is not None:

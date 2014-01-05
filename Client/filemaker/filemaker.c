@@ -23,7 +23,7 @@ int main(int argc ,char *argv[])
       filesize = atoi(argv[1]);
       printf("%d \n", filesize);
     }
-    
+
     remove(FILEPATH);
     
     fd = open(FILEPATH, O_WRONLY | O_CREAT | O_EXCL, (mode_t)0600);
