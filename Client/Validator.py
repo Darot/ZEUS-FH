@@ -33,14 +33,14 @@ class Validator():
         if not 0 < client_count < 51:
             sys.exit("Invalid client count! max. 50")
 
-    def validate_flows(self, flows):
-        if not 0 < flows < 1000001:
-            sys.exit("Invalid flow! max. 1000000")
+    def validate_flow(self, flow):
+        if not 0 < flow < 1000001:
+            sys.exit("Invalid flows! max. 1000000")
 
     def validate_repsize(self, repsize):
         if not 0 < repsize < 1025:
-            sys.exit("Invalid repsize! max. 1024")
+            sys.exit("Invalid replysize! max. 1024")
 
     def validate_delay(self, delay):
-        if not 0 < delay < 11:
+        if not 0 < delay < 10.01:
             sys.exit("Invalid delay! max. 10")

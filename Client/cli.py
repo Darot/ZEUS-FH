@@ -98,7 +98,7 @@ validator = Validator()
 
 #validate replysize
 if args.reply_size is not None:
-    validator.validate_repsize(args.reply_size)
+    validator.validate_repsize(int(args.reply_size))
     repsize = args.reply_size
 
 #validate and set Port
@@ -111,12 +111,12 @@ if args.type is not None:
     validator.validate_type(args.type)
     type = args.type
 
-#validate an set size
+#validate and set size
 if args.size is not None:
     validator.validate_size(int(args.size))
     size = args.size
 
-#validate an set client count
+#validate and set client count
 if args.client_count is not None:
     validator.validate_client_count(int(args.client_count))
     client_count = int(args.client_count)
@@ -128,12 +128,12 @@ if args.target_ip is not None:
 
 #validate and set delay
 if args.delay is not None:
-    validator.validate_delay(args.delay)
+    validator.validate_delay (float(args.delay))
     delay = float(args.delay)
 
-#validate and set flow
+#validate and set flows
 if args.flows is not None:
-    validator.validate_flows(args.flows)
+    validator.validate_flow(int(args.flows))
     flow = int(args.flows)
 
 
