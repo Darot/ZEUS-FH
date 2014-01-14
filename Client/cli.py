@@ -96,6 +96,7 @@ validator = Validator()
 
 #validate replysize
 if args.reply_size is not None:
+    validator.validate_repsize(args.reply_size)
     repsize = args.reply_size
 
 #validate and set Port
@@ -125,10 +126,12 @@ if args.target_ip is not None:
 
 #validate and set delay
 if args.delay is not None:
+    validator.validate_delay(args.delay)
     delay = float(args.delay)
 
-#validate an set flow
+#validate and set flow
 if args.flows is not None:
+    validator.validate_flows(args.flows)
     flow = int(args.flows)
 
 

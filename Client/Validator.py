@@ -1,4 +1,4 @@
-__author__ = 'Daniel Roth'
+__author__ = 'Sinan Diehl'
 import sys
 import socket
 
@@ -32,3 +32,15 @@ class Validator():
     def validate_client_count(self, client_count):
         if not 0 < client_count < 51:
             sys.exit("Invalid client count! max. 50")
+
+    def validate_flows(self, flows):
+        if not 0 < flows < 1000001:
+            sys.exit("Invalid flow! max. 1000000")
+
+    def validate_repsize(self, repsize):
+        if not 0 < repsize < 1025:
+            sys.exit("Invalid repsize! max. 1024")
+
+    def validate_delay(self, delay):
+        if not 0 < delay < 11:
+            sys.exit("Invalid delay! max. 10")
