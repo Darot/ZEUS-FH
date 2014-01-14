@@ -36,10 +36,7 @@ def zmq_req_starter():
 @app.route("/http_post", methods=['POST'])
 def http_post():
     #print sys.getsizeof(request)
-    request.files['file'].save('/tmp/foo')
-    size = os.stat('/tmp/foo').st_size
-    print "Received " + str(size) + " Bytes"
-    return 'file received'
+    return 'received'
 
 if __name__ == "__main__":
     app.debug = True

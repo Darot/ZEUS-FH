@@ -112,12 +112,7 @@ class Client():
         for i in range(flow):
             time.sleep(delay)
             request = urllib2.Request("http://" + ip + ":" + httpport + "/http_post", datagen, headers)
-            #lock.acquire()
-            if urllib2.urlopen(request).code is not 200:
-                print "Something went wrong! Maybe the Server is not running?"
-                return False
             self.progress.update_progress()
-            #lock.release()
         return True
 
     def send_http_post_time(self, ip, httpport, endurance, delay, size):
@@ -145,9 +140,6 @@ class Client():
             time.sleep(delay)
             request = urllib2.Request("http://" + ip + ":" + httpport + "/http_post", datagen, headers)
             #lock.acquire()
-            if urllib2.urlopen(request).code is not 200:
-                print "Something went wrong! Maybe the Server is not running?"
-                return False
             #self.progress.update_progress()
             #lock.release()
         return True
