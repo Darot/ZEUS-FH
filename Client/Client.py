@@ -32,6 +32,10 @@ class Client(threading.Thread):
         self.ip = ip
 
 
+    #################################
+    #           SOCKETS             #
+    #################################
+
     #This function sends a Message to a REP Socket
     def sendAsync(self, flow, size, delay):
         '''
@@ -54,6 +58,10 @@ class Client(threading.Thread):
             lock.acquire()
             self.progress.update_progress()
             lock.release()
+
+    #################################
+    #           HTTP                #
+    #################################
 
     def send_http_post(self, ip, httpport, flow, delay, size):
         '''

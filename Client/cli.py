@@ -172,10 +172,19 @@ def run_http_post():
     client = Client(p)
     client.send_http_post(ip, httpport, flow, delay, size)
 
+def server_status():
+    conn = httplib.HTTPConnection(ip + ":" + httpport)
+    try:
+        conn.request("GET", "http://" + ip + ":" + httpport + "/status")
+        response = conn.getresponse()
+        print Fore.GREEN + "Server is ONLINE" + Fore.RESET
+    except:
+        sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport +  Fore.RESET)
 
 
 if type is not None:
     print "Trying to configure server ... on Port " + port
+    server_status()
     print "abort with Ctrl-C"
     time.sleep(2)
     #This is a functionmap that calls a function by type

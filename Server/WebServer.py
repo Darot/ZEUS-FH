@@ -3,6 +3,7 @@ __author__ = 'Daniel Roth'
 from flask import Flask
 from flask import request
 from Server import Server
+from flask import jsonify
 
 import sys
 import os
@@ -20,6 +21,9 @@ def run_async(port, flow, repsize):
     time.sleep(1)
 
 
+@app.route("/status")
+def server_status():
+    return "Online!"
 
 #Trigger on a Request for a ZMQ reply socket
 #the client will be a request socket
