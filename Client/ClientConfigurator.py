@@ -1,4 +1,4 @@
-__author__ = 'Gregor Milenkovic / Daniel Roth'
+__author__ = 'Daniel Roth'
 import ConfigParser
 import os.path
 from tabulate import tabulate
@@ -57,7 +57,7 @@ class ClientConfigurator():
         self.config.write(configfile)
         configfile.close()
 
-
+    __author__ = 'Gregor Milenkovic'
     def load_config(self, filename):
         '''
         Reads a configuration file and returns the values in a dictionary.
@@ -78,7 +78,7 @@ class ClientConfigurator():
                 "delay": self.config.get('Settings', 'delay')}
         return params
 
-
+    __author__ = 'Daniel Roth'
     def print_config(self, filename):
         params = self.load_config(filename)
         params = params.items()

@@ -1,7 +1,6 @@
 __author__ = 'Daniel Roth'
 import zmq
-
-
+import sys
 
 class Server():
     """
@@ -30,6 +29,7 @@ class Server():
             #Wait for next request from a client
             #A reply is not needed in this case
             message = repsocket.recv()
+            print sys.getsizeof(message)
             print "message received " + message + " bytes"
             if repsize == 0:
                 repsocket.send(bytes(1))

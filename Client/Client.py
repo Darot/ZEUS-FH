@@ -5,7 +5,7 @@ import threading
 from thread import allocate_lock
 import datetime
 import time
-
+import sys
 
 import httplib
 
@@ -31,6 +31,7 @@ class Client(threading.Thread):
     def setIp(self, ip):
         self.ip = ip
 
+
     #This function sends a Message to a REP Socket
     def sendAsync(self, flow, size, delay):
         '''
@@ -48,8 +49,7 @@ class Client(threading.Thread):
         #send requests
         for i in range(flow):
             time.sleep(delay)
-            now = str(datetime.datetime.now())
-            reqsocket.send(bytes(size))
+            reqsocket.send('a')
             message = reqsocket.recv()
             lock.acquire()
             self.progress.update_progress()
