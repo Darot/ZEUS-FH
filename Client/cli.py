@@ -37,6 +37,7 @@ type = None
 client_count = 1
 size = 1
 delay = 0
+endurance = 15
 
 argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus Networktool')
 #################################
@@ -53,6 +54,7 @@ group.add_argument('-c', '--client_count', help="Count of sending clients", requ
 group.add_argument('-d', '--delay', help="Delay between Messages (seconds)", required=False)
 group.add_argument('-f', '--flows', help="Count of flows", required=False)
 group.add_argument('-r', '--reply_size', help="Size of replies in bytes", required=False)
+group.add_argument('-e', '--endurance', help="Time to send. Don't use with -f, --flows", required=False)
 
 group.add_argument('--save', help="Save current parameterset in a config file", required=False)
 group_mute.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
@@ -146,7 +148,7 @@ if args.save is not None:
 # AND RUN CLIENT                #
 #################################
 def run_req():
-    p = Progressbar(flow*client_count)
+    p = Progressbar(flow)
     params = urllib.urlencode({'type': type,
                                'port': port, 'flow': flow*client_count,
                                'repsize': repsize})
@@ -157,20 +159,27 @@ def run_req():
     conn = httplib.HTTPConnection(ip + ":" + httpport)
     print "http://" + ip + ":" + httpport + "/" + str(args.type)
     conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
-    for i in range(client_count):
-        client = Client(p)
-        thread.start_new_thread(client.sendAsync, (flow, size, delay))
+    time.sleep(6)
+    client = Client(p)
+    if args.endurance == None:
+        client.sendAsync(flow, size, delay)
+    else:
+        client.sendAsync_time(endurance, size, delay)
     response = conn.getresponse()
     if response.status == 200:
         print "Transmission complete!"
     else:
         print "Something went wrong!"
 
+
 def run_http_post():
     #initialize a progressbar
-    p = Progressbar(flow*client_count)
+    p = Progressbar(flow)
     client = Client(p)
-    client.send_http_post(ip, httpport, flow, delay, size)
+    if args.endurance == None:
+        client.send_http_post(ip, httpport, flow, delay, size)
+    else:
+        client.send_http_post_time(ip, httpport, endurance, delay, size)
 
 def server_status():
     conn = httplib.HTTPConnection(ip + ":" + httpport)
@@ -179,7 +188,7 @@ def server_status():
         response = conn.getresponse()
         print Fore.GREEN + "Server is ONLINE" + Fore.RESET
     except:
-        sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport +  Fore.RESET)
+        sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
 
 
 if type is not None:
@@ -188,6 +197,6 @@ if type is not None:
     print "abort with Ctrl-C"
     time.sleep(2)
     #This is a functionmap that calls a function by type
-    functionMap = {"zmq_req": run_req, "http_post": run_http_post}
+    functionMap = {"zmq_req": run_req, "http_post": run_http_post, "zmq_req_t": run_req}
     functionToCall = functionMap[type]
     functionToCall()
