@@ -10,7 +10,7 @@ class Validator():
             sys.exit("Invalid port! Port must be between 80 and 9999")
 
     def validate_type(self, type):
-        valid_types = ['zmq_req', 'http_get', 'http_post']
+        valid_types = ['zmq_req', 'zmq_req_t', 'http_get', 'http_post']
         if type in valid_types:
             return True
         else:

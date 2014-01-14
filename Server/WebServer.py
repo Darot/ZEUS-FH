@@ -14,10 +14,10 @@ app = Flask(__name__)
 args = None
 
 
-def run_async(port, flow, repsize):
+def run_async(port, repsize):
     print request.form['type']
     server = Server(port)
-    server.run_asyncsocket(int(flow), int(repsize))
+    server.run_asyncsocket(int(repsize))
     time.sleep(1)
 
 
@@ -29,8 +29,9 @@ def server_status():
 #the client will be a request socket
 @app.route("/zmq_req", methods=['POST'])
 def zmq_req_starter():
-    run_async(request.form["port"], request.form["flow"], request.form["repsize"])
+    run_async(request.form["port"],  request.form["repsize"])
     return 'initialising'
+
 
 @app.route("/http_post", methods=['POST'])
 def http_post():
