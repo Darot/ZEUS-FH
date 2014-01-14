@@ -99,6 +99,30 @@
         </leaf>
       </split-second>
     </splitter>
+=======
+    <leaf>
+      <file leaf-file-name="cli.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/cli.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="97" column="0" selection-start="3514" selection-end="3514" vertical-scroll-proportion="-4.0" vertical-offset="1638" max-vertical-offset="3780">
+              <folding>
+                <element signature="e#51#66#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Validator.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/Validator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="41" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.7882353" vertical-offset="323" max-vertical-offset="918">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -116,19 +140,17 @@
         <option value="$PROJECT_DIR$/Client/zeus.cmd" />
         <option value="$PROJECT_DIR$/Client/filemaker/filemaker.c" />
         <option value="$PROJECT_DIR$/Client/ClientConfigurator.py" />
-        <option value="$PROJECT_DIR$/Client/Validator.py" />
         <option value="$PROJECT_DIR$/Server/Server.py" />
         <option value="$PROJECT_DIR$/Server/WebServer.py" />
         <option value="$PROJECT_DIR$/Client/Client.py" />
         <option value="$PROJECT_DIR$/Client/cli.py" />
+        <option value="$PROJECT_DIR$/Client/Validator.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="24" />
-    <option name="width" value="1855" />
-    <option name="height" value="1056" />
+    <option name="width" value="1366" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -218,6 +240,7 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -228,7 +251,25 @@
       <PyConsoleSettings />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.cli">
+    <configuration default="false" name="cli" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Client" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Zeus" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Client/cli.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -350,7 +391,14 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="0" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.cli" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.cli" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
@@ -399,19 +447,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1366" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2165059" sideWeight="0.57650274" order="8" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12299169" sideWeight="0.7834941" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2498615" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+=======
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17789166" sideWeight="0.67147434" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17789166" sideWeight="0.38942307" order="2" side_tool="true" content_ui="tabs" />
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2165059" sideWeight="0.42349726" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -454,6 +510,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
@@ -462,21 +519,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Client.py">
+=======
+    <entry file="file://$PROJECT_DIR$/Client/__init__.py">
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="10" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-          <folding>
-            <element signature="e#27#37#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Validator.py">
+    <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="70" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="378">
+        <state line="13" column="1" selection-start="188" selection-end="189" vertical-scroll-proportion="0.15845071" vertical-offset="0" max-vertical-offset="774">
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Client/cli.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="43" selection-start="2085" selection-end="2085" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="1620">
@@ -486,13 +543,16 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
     <entry file="file://$PROJECT_DIR$/Server/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="882">
+        <state line="0" column="3" selection-start="2" selection-end="3" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1386">
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="17" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="342">
@@ -518,17 +578,29 @@
     <entry file="file://$PROJECT_DIR$/Server/Server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="0" selection-start="1378" selection-end="1378" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="1386">
+=======
+    <entry file="file://$PROJECT_DIR$/Client/ServerConfigurator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="27" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+=======
+    <entry file="file://$PROJECT_DIR$/Client/Progressbar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Client/Validator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="0" selection-start="1336" selection-end="1336" vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="936">
@@ -546,13 +618,22 @@
     <entry file="file://$PROJECT_DIR$/Client/ClientConfigurator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="0" selection-start="867" selection-end="867" vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="1584">
+=======
+    <entry file="file://$PROJECT_DIR$/Client/ClientConfigurator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="15" selection-start="41" selection-end="42" vertical-scroll-proportion="0.03169014" vertical-offset="0" max-vertical-offset="1620">
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Client.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="110" column="46" selection-start="3340" selection-end="3340" vertical-scroll-proportion="0.34736842" vertical-offset="1683" max-vertical-offset="2700">
+=======
+        <state line="135" column="55" selection-start="4356" selection-end="4356" vertical-scroll-proportion="0.27112675" vertical-offset="2276" max-vertical-offset="2844">
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
           <folding>
             <element signature="e#27#37#0" expanded="true" />
           </folding>
@@ -561,10 +642,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/cli.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="136" column="0" selection-start="4492" selection-end="4492" vertical-scroll-proportion="0.8725146" vertical-offset="1702" max-vertical-offset="3780">
+=======
+        <state line="97" column="0" selection-start="3514" selection-end="3514" vertical-scroll-proportion="-4.0" vertical-offset="1638" max-vertical-offset="3780">
+>>>>>>> 06a9a1b5321994dca0bf598a386c8103b1131f36
           <folding>
             <element signature="e#51#66#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Validator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="41" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.7882353" vertical-offset="323" max-vertical-offset="918">
+          <folding />
         </state>
       </provider>
     </entry>
