@@ -19,17 +19,10 @@ from subprocess import call
 lock = allocate_lock()
 
 class Client():
-    port = "8080"
-    ip = "localhost"
 
     def __init__(self, progress):
         self.progress = progress
 
-    def setPort(self, port):
-        self.port = port
-
-    def setIp(self, ip):
-        self.ip = ip
 
 
     #################################
@@ -37,7 +30,7 @@ class Client():
     #################################
 
     #This function sends a Message to a REP Socket
-    def sendAsync(self, flow, size, delay):
+    def sendAsync(self, flow, size, delay, ip, port):
         '''
         Loops "flow"-times and sends messages to a ZMQ_Rep socket on a defined Server
         This is threadsave for multiple client instances.
@@ -49,7 +42,7 @@ class Client():
         #Connecting the Socket
         context = zmq.Context()
         reqsocket = context.socket(zmq.REQ)
-        reqsocket.connect("tcp://" + self.ip + ":" + self.port)
+        reqsocket.connect("tcp://" + ip + ":" + port)
         #send requests
         for i in range(flow):
             time.sleep(delay)
@@ -59,7 +52,7 @@ class Client():
         print "All messages sent!"
 
     #This function sends a Message to a REP Socket
-    def sendAsync_time(self, endurance, size, delay):
+    def sendAsync_time(self, endurance, size, delay, ip, port):
         '''
         Loops "flow"-times and sends messages to a ZMQ_Rep socket on a defined Server
         This is threadsave for multiple client instances.
@@ -71,7 +64,7 @@ class Client():
         #Connecting the Socket
         context = zmq.Context()
         reqsocket = context.socket(zmq.REQ)
-        reqsocket.connect("tcp://" + self.ip + ":" + self.port)
+        reqsocket.connect("tcp://" + ip + ":" + port)
         #send requests
         stop = time.time() + endurance
         self.progress.set_starttime(datetime.datetime.now())

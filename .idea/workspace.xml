@@ -22,7 +22,7 @@
     <favorites_list name="Zeus" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.5009346">
       <split-first>
         <leaf>
           <file leaf-file-name="Validator.py" pinned="false" current="false" current-in-tab="false">
@@ -34,10 +34,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Progressbar.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="Progressbar.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Client/Progressbar.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="41" column="45" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.7483146" vertical-offset="0" max-vertical-offset="890">
+                <state line="19" column="22" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
                   <folding />
                 </state>
               </provider>
@@ -63,10 +63,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="cli.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="cli.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Client/cli.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="203" column="43" selection-start="6841" selection-end="6841" vertical-scroll-proportion="0.0" vertical-offset="2592" max-vertical-offset="3960">
+                <state line="202" column="56" selection-start="6817" selection-end="6817" vertical-scroll-proportion="1.1213483" vertical-offset="2638" max-vertical-offset="3960">
                   <folding>
                     <element signature="e#51#66#0" expanded="true" />
                   </folding>
@@ -87,10 +87,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Client.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Client/Client.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="148" column="8" selection-start="5012" selection-end="5012" vertical-scroll-proportion="0.61573035" vertical-offset="1864" max-vertical-offset="2790">
+                <state line="20" column="15" selection-start="331" selection-end="331" vertical-scroll-proportion="-0.121348314" vertical-offset="216" max-vertical-offset="2664">
                   <folding />
                 </state>
               </provider>
@@ -122,6 +122,9 @@
                 <state line="35" column="16" selection-start="645" selection-end="645" vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="1098">
                   <folding>
                     <element signature="e#28#51#0" expanded="true" />
+                    <marker date="1390145973217" expanded="true" signature="459:544" placeholder="..." />
+                    <marker date="1390145973217" expanded="true" signature="821:1026" placeholder="..." />
+                    <marker date="1390145973217" expanded="true" signature="1087:1129" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -151,9 +154,9 @@
         <option value="$PROJECT_DIR$/Server/WebsocketServer.py" />
         <option value="$PROJECT_DIR$/Client/runserver.py" />
         <option value="$PROJECT_DIR$/Server/Server.py" />
-        <option value="$PROJECT_DIR$/Client/cli.py" />
         <option value="$PROJECT_DIR$/Server/WebServer.py" />
         <option value="$PROJECT_DIR$/Client/Progressbar.py" />
+        <option value="$PROJECT_DIR$/Client/cli.py" />
         <option value="$PROJECT_DIR$/Client/Client.py" />
       </list>
     </option>
@@ -506,6 +509,9 @@
         <state line="10" column="17" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="342">
           <folding>
             <element signature="e#28#51#0" expanded="true" />
+            <marker date="1390145973217" expanded="true" signature="459:544" placeholder="..." />
+            <marker date="1390145973217" expanded="true" signature="821:1026" placeholder="..." />
+            <marker date="1390145973217" expanded="true" signature="1087:1129" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -553,20 +559,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/cli.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="43" selection-start="6841" selection-end="6841" vertical-scroll-proportion="0.0" vertical-offset="2592" max-vertical-offset="3960">
-          <folding>
-            <element signature="e#51#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="16" selection-start="645" selection-end="645" vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="1098">
           <folding>
             <element signature="e#28#51#0" expanded="true" />
+            <marker date="1390145973217" expanded="true" signature="459:544" placeholder="..." />
+            <marker date="1390145973217" expanded="true" signature="821:1026" placeholder="..." />
+            <marker date="1390145973217" expanded="true" signature="1087:1129" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -596,15 +596,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Progressbar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="45" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.7483146" vertical-offset="0" max-vertical-offset="890">
+        <state line="19" column="22" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="8" selection-start="5012" selection-end="5012" vertical-scroll-proportion="0.61573035" vertical-offset="1864" max-vertical-offset="2790">
+        <state line="20" column="15" selection-start="331" selection-end="331" vertical-scroll-proportion="-0.121348314" vertical-offset="216" max-vertical-offset="2664">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/cli.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="202" column="56" selection-start="6817" selection-end="6817" vertical-scroll-proportion="1.1213483" vertical-offset="2638" max-vertical-offset="3960">
+          <folding>
+            <element signature="e#51#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

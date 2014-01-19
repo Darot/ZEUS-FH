@@ -27,6 +27,24 @@ if [ ! -d "/usr/local/bin/Zeus" ]; then
   exit 1
 } fi
 
+# Libraries
+sudo apt-get install Python3
+sudo apt-get install gcc
+sudo apt-get install libpython3.2
+sudo apt-get install libpython2.7
+sudo apt-get install python-setuptools
+sudo apt-get install python-dev
+sudo apt-get install libevent-dev
+sudo apt-get install libevent-1.4.2
+sudo apt-get install libzmq-dev
+
+sudo easy_install pyzmq
+sudo easy_install autobahn
+sudo easy_install Colorama
+sudo easy_install twisted
+
+# Programupdate
+
 #remove old links an files:
 sudo rm -R /usr/local/bin/Zeus
 sudo rm /usr/local/bin/zeus
@@ -34,6 +52,7 @@ sudo rm /usr/local/bin/zeus
 chmod +x cli.py
 sudo cp -R ../Client /usr/local/bin/Zeus
 sudo ln -s /usr/local/bin/Zeus/cli.py /usr/local/bin/zeus
+sudo gcc ../Client/filemaker/filemaker.c -o ../Client/filemaker/filemaker
 
 if [ $? == 0 ]; then
 {

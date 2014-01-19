@@ -159,9 +159,9 @@ def run_req():
     time.sleep(6)
     client = Client(p)
     if args.endurance == None:
-        client.sendAsync(flow, size, delay)
+        client.sendAsync(flow, size, delay, ip, port)
     else:
-        client.sendAsync_time(endurance, size, delay)
+        client.sendAsync_time(endurance, size, delay, ip, port)
     print "Transmission complete!"
 
 
