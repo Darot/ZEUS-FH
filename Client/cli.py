@@ -37,7 +37,7 @@ type = None
 client_count = 1
 size = 1
 delay = 0
-endurance = 4900
+endurance = 20
 
 argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus Networktool')
 #################################
@@ -56,7 +56,7 @@ group.add_argument('-f', '--flows', help="Count of flows", required=False)
 group.add_argument('-r', '--reply_size', help="Size of replies in bytes", required=False)
 group.add_argument('-e', '--endurance', help="Time to send. Don't use with -f, --flows", required=False)
 
-group.add_argument('run', default=None, help="Run a server instance on given address")
+group.add_argument('run', nargs='?', help="Run a server instance on given address")
 
 group.add_argument('--save', help="Save current parameterset in a config file", required=False)
 group_mute.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
@@ -155,27 +155,14 @@ if args.save is not None:
 #################################
 def run_req():
     p = Progressbar(flow)
-    params = urllib.urlencode({'type': type,
-                               'port': port, 'flow': flow*client_count,
-                               'repsize': repsize})
-
-    headers = {"Content-type": "application/x-www-form-urlencoded",
-               "Accept": "text/plain"}
-
-    conn = httplib.HTTPConnection(ip + ":" + httpport)
     print "http://" + ip + ":" + httpport + "/" + str(args.type)
-    conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
     time.sleep(6)
     client = Client(p)
     if args.endurance == None:
         client.sendAsync(flow, size, delay)
     else:
         client.sendAsync_time(endurance, size, delay)
-    response = conn.getresponse()
-    if response.status == 200:
-        print "Transmission complete!"
-    else:
-        print "Something went wrong!"
+    print "Transmission complete!"
 
 
 def run_http_post():
@@ -196,14 +183,33 @@ def server_status():
     except:
         sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
 
-print args.run
+def init_zmq_req():
+    conn = httplib.HTTPConnection(ip + ":" + httpport)
+    params = urllib.urlencode({'type': type,
+                               'port': port, 'flow': flow*client_count,
+                               'repsize': repsize})
 
-if type is not None:
-    print "Trying to configure server ... on Port " + port
-    server_status()
+    headers = {"Content-type": "application/x-www-form-urlencoded",
+               "Accept": "text/plain"}
+    try:
+        conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
+        response = conn.getresponse()
+        print Fore.GREEN + "Server is ONLINE" + Fore.RESET
+    except:
+        sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
+
+
+if args.run is not None:
+    #This is a functionmap that calls a function by type
+    functionMap = {"zmq_req": init_zmq_req}
+    functionToCall = functionMap[type]
+    functionToCall()
+
+
+if type is not None and args.run is None:
     print "abort with Ctrl-C"
     time.sleep(2)
     #This is a functionmap that calls a function by type
-    functionMap = {"zmq_req": run_req, "http_post": run_http_post, "zmq_req_t": run_req}
+    functionMap = {"zmq_req": run_req, "http_post": run_http_post}
     functionToCall = functionMap[type]
     functionToCall()
