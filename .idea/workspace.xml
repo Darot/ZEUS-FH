@@ -57,16 +57,16 @@
           <file leaf-file-name="setup.sh" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Client/setup.sh">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="30" column="1" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
+                <state line="48" column="1" selection-start="1313" selection-end="1313" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1098">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="cli.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="cli.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Client/cli.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="202" column="56" selection-start="6817" selection-end="6817" vertical-scroll-proportion="1.1213483" vertical-offset="2638" max-vertical-offset="3960">
+                <state line="0" column="0" selection-start="0" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3960">
                   <folding>
                     <element signature="e#51#66#0" expanded="true" />
                   </folding>
@@ -87,10 +87,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Client/Client.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="15" selection-start="331" selection-end="331" vertical-scroll-proportion="-0.121348314" vertical-offset="216" max-vertical-offset="2664">
+                <state line="20" column="15" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="2664">
                   <folding />
                 </state>
               </provider>
@@ -116,15 +116,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="WebServer.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="WebServer.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="35" column="16" selection-start="645" selection-end="645" vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="1098">
+                <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1116">
                   <folding>
-                    <element signature="e#28#51#0" expanded="true" />
-                    <marker date="1390145973217" expanded="true" signature="459:544" placeholder="..." />
-                    <marker date="1390145973217" expanded="true" signature="821:1026" placeholder="..." />
-                    <marker date="1390145973217" expanded="true" signature="1087:1129" placeholder="..." />
+                    <element signature="e#51#74#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -154,10 +151,10 @@
         <option value="$PROJECT_DIR$/Server/WebsocketServer.py" />
         <option value="$PROJECT_DIR$/Client/runserver.py" />
         <option value="$PROJECT_DIR$/Server/Server.py" />
-        <option value="$PROJECT_DIR$/Server/WebServer.py" />
         <option value="$PROJECT_DIR$/Client/Progressbar.py" />
         <option value="$PROJECT_DIR$/Client/cli.py" />
         <option value="$PROJECT_DIR$/Client/Client.py" />
+        <option value="$PROJECT_DIR$/Server/WebServer.py" />
       </list>
     </option>
   </component>
@@ -508,10 +505,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="17" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="342">
           <folding>
-            <element signature="e#28#51#0" expanded="true" />
-            <marker date="1390145973217" expanded="true" signature="459:544" placeholder="..." />
-            <marker date="1390145973217" expanded="true" signature="821:1026" placeholder="..." />
-            <marker date="1390145973217" expanded="true" signature="1087:1129" placeholder="..." />
+            <element signature="e#51#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -554,20 +548,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/setup.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="1" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
+        <state line="48" column="1" selection-start="1313" selection-end="1313" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1098">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="16" selection-start="645" selection-end="645" vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="1098">
-          <folding>
-            <element signature="e#28#51#0" expanded="true" />
-            <marker date="1390145973217" expanded="true" signature="459:544" placeholder="..." />
-            <marker date="1390145973217" expanded="true" signature="821:1026" placeholder="..." />
-            <marker date="1390145973217" expanded="true" signature="1087:1129" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -603,16 +585,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="15" selection-start="331" selection-end="331" vertical-scroll-proportion="-0.121348314" vertical-offset="216" max-vertical-offset="2664">
+        <state line="20" column="15" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="2664">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/cli.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="56" selection-start="6817" selection-end="6817" vertical-scroll-proportion="1.1213483" vertical-offset="2638" max-vertical-offset="3960">
+        <state line="0" column="0" selection-start="0" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3960">
           <folding>
             <element signature="e#51#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/WebServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1116">
+          <folding>
+            <element signature="e#51#74#0" expanded="true" />
           </folding>
         </state>
       </provider>

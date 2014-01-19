@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 __author__ = 'Daniel Roth'
 
 from flask import Flask
