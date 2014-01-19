@@ -56,8 +56,7 @@ group.add_argument('-f', '--flows', help="Count of flows", required=False)
 group.add_argument('-r', '--reply_size', help="Size of replies in bytes", required=False)
 group.add_argument('-e', '--endurance', help="Time to send. Don't use with -f, --flows", required=False)
 
-group.add_argument('run', help="Run a server instance on given adress ")
-group.add_argument('stop', help="Stop a running server instance on given adress")
+group.add_argument('run', default=None, help="Run a server instance on given address")
 
 group.add_argument('--save', help="Save current parameterset in a config file", required=False)
 group_mute.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
@@ -197,6 +196,7 @@ def server_status():
     except:
         sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
 
+print args.run
 
 if type is not None:
     print "Trying to configure server ... on Port " + port
