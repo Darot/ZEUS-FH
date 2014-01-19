@@ -37,7 +37,7 @@ type = None
 client_count = 1
 size = 1
 delay = 0
-endurance = 15
+endurance = 4900
 
 argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus Networktool')
 #################################
@@ -56,9 +56,13 @@ group.add_argument('-f', '--flows', help="Count of flows", required=False)
 group.add_argument('-r', '--reply_size', help="Size of replies in bytes", required=False)
 group.add_argument('-e', '--endurance', help="Time to send. Don't use with -f, --flows", required=False)
 
+group.add_argument('run', help="Run a server instance on given adress ")
+group.add_argument('stop', help="Stop a running server instance on given adress")
+
 group.add_argument('--save', help="Save current parameterset in a config file", required=False)
 group_mute.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
 group_mute.add_argument('--print_config', help="Print a saved configuration file", required=False)
+
 
 #Read params
 args = argparser.parse_args()
@@ -128,7 +132,7 @@ if args.target_ip is not None:
 
 #validate and set delay
 if args.delay is not None:
-    validator.validate_delay (float(args.delay))
+    validator.validate_delay(float(args.delay))
     delay = float(args.delay)
 
 #validate and set flows
