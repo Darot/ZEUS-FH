@@ -45,7 +45,7 @@ class Server():
         repsocket = context.socket(zmq.REP)
         try:
 	    repsocket.bind("tcp://*:%s" % self.port)
-	    self.status.add_server("ZMQ_R", str(self.port))
+	    self.status.add_server("ZMQ_Req", str(self.port))
 	except zmq.ZMQError:
 	    print "A server is already running on that port."
 	

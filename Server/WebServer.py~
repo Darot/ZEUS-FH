@@ -40,7 +40,8 @@ def run_async(port, repsize):
 
 @app.route("/status")
 def server_status():
-    return status.get_printable()
+    print status.get_printable()
+    return "Online!"
 
 @app.route("/ws")
 def websocket():
