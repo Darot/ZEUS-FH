@@ -21,7 +21,13 @@ class Server_status():
 	i += 1
 	return output
 
-
+    def check_running(self, port):
+	for server in self.servers:
+	    if "".join(server.values()) == str(port):
+		return "True"
+	return "False"
+	    
+	
 
 
 

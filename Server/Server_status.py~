@@ -17,11 +17,17 @@ class Server_status():
 	output += "|---------------|\n"
 	i = 0
 	for server in self.servers:
-	    output += "| " + "".join(self.servers[i].keys())  + "\t| " + Fore.GREEN + "".join(self.servers[i].values()) + Fore.RESET + "\t|\n"
+	    output += "| " + "".join(server.keys())  + "\t| " + Fore.GREEN + "".join(server.values()) + Fore.RESET + "\t|\n"
 	i += 1
 	return output
 
-
+    def check_running(self, port):
+	for server in self.servers:
+	    if "".join(server.values()) == "5000":
+		return "True"
+	return "False"
+	    
+	
 
 
 

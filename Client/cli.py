@@ -183,8 +183,23 @@ def server_status():
 	print response.read()
     except:
 	sys.exit("No server running on " + ip )
+	
+def check_running():
+    try:
+	conn = httplib.HTTPConnection(ip + ":" + httpport)
+	conn.request("GET", "http://" + ip + ":" + httpport + "/check_running?port=" + port)
+	response = conn.getresponse()
+	if response.read() == "True":
+	    return True
+	else:
+	    return False
+    except:
+	sys.exit("No server running on " + ip )
+
 
 def init_zmq_req():
+    if check_running():
+	  sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
     conn = httplib.HTTPConnection(ip + ":" + httpport)
     params = urllib.urlencode({'type': type,
                                'port': port, 'flow': flow*client_count,
