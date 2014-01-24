@@ -30,7 +30,7 @@ init()
 #Standard values
 httpport = '5000'
 port = '8080'
-ip = 'localhost'
+ip = '127.0.0.1'
 flow = 1
 repsize = 0
 type = None
@@ -62,7 +62,7 @@ group.add_argument('--save', help="Save current parameterset in a config file", 
 group_mute.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
 group_mute.add_argument('--print_config', help="Print a saved configuration file", required=False)
 
-group_mute.add_argument('--status',  help="Get server status with - zeus status [address]", required=False)
+group.add_argument('status', help="Get server status with - zeus status [address]")
 
 #Read params
 args = argparser.parse_args()
@@ -70,16 +70,15 @@ args = argparser.parse_args()
 if args.print_config is not None:
     c = ClientConfigurator()
     if c.check_exists(args.print_config) is False:
-         print Fore.RED + "No configuration named " + args.print_config + " found!" + Fore.RESET
+        print Fore.RED + "No configuration named " + args.print_config + " found!" + Fore.RESET
     else:
         c.print_config(args.print_config)
         sys.exit()
 
-
 if args.config is not None:
     c = ClientConfigurator()
     if c.check_exists(args.config) is False:
-         print Fore.RED + "No configuration named " + args.print_config + " found!" + Fore.RESET
+        print Fore.RED + "No configuration named " + args.print_config + " found!" + Fore.RESET
     else:
         params = c.load_config(args.config)
         #set loaded params
@@ -140,11 +139,10 @@ if args.flows is not None:
     validator.validate_flow(int(args.flows))
     flow = int(args.flows)
 
-
 if args.save is not None:
     c = ClientConfigurator()
     if c.check_exists(args.save):
-         print Fore.RED + "A configuration named " + args.save + " already exists!" + Fore.RESET
+        print Fore.RED + "A configuration named " + args.save + " already exists!" + Fore.RESET
     else:
         c.write_config(args.save, port, httpport, ip, flow, repsize, type,
                        client_count, size, delay)
@@ -175,34 +173,36 @@ def run_http_post():
     else:
         client.send_http_post_time(ip, httpport, endurance, delay, size)
 
+
 def server_status():
     try:
-	conn = httplib.HTTPConnection(ip + ":" + httpport)
-	conn.request("GET", "http://" + ip + ":" + httpport + "/status")
-	response = conn.getresponse()
-	print response.read()
+        conn = httplib.HTTPConnection(ip + ":" + httpport)
+        conn.request("GET", "http://" + ip + ":" + httpport + "/status")
+        response = conn.getresponse()
+        print response.read()
     except:
-	sys.exit("No server running on " + ip )
-	
+        sys.exit("No server running on " + ip)
+
+
 def check_running():
     try:
-	conn = httplib.HTTPConnection(ip + ":" + httpport)
-	conn.request("GET", "http://" + ip + ":" + httpport + "/check_running?port=" + port)
-	response = conn.getresponse()
-	if response.read() == "True":
-	    return True
-	else:
-	    return False
+        conn = httplib.HTTPConnection(ip + ":" + httpport)
+        conn.request("GET", "http://" + ip + ":" + httpport + "/check_running?port=" + port)
+        response = conn.getresponse()
+        if response.read() == "True":
+            return True
+        else:
+            return False
     except:
-	sys.exit("No server running on " + ip )
+        sys.exit("No server running on " + ip)
 
 
 def init_zmq_req():
     if check_running():
-	  sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
+        sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
     conn = httplib.HTTPConnection(ip + ":" + httpport)
     params = urllib.urlencode({'type': type,
-                               'port': port, 'flow': flow*client_count,
+                               'port': port, 'flow': flow * client_count,
                                'repsize': repsize})
 
     headers = {"Content-type": "application/x-www-form-urlencoded",
@@ -217,13 +217,11 @@ def init_zmq_req():
 if args.status is not None:
     server_status()
 
-
 if args.run is not None and args.status is None:
     #This is a functionmap that calls a function by type
     functionMap = {"zmq_req": init_zmq_req}
     functionToCall = functionMap[type]
     functionToCall()
-
 
 if type is not None and args.run is None and args.status is None:
     print "abort with Ctrl-C"
