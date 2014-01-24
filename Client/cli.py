@@ -62,7 +62,7 @@ group.add_argument('--save', help="Save current parameterset in a config file", 
 group_mute.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
 group_mute.add_argument('--print_config', help="Print a saved configuration file", required=False)
 
-group.add_argument('status', help="Get server status with - zeus status [address]")
+group.add_argument('status', nargs='?', help="Get server status with - zeus --status [address]")
 
 #Read params
 args = argparser.parse_args()
@@ -123,6 +123,11 @@ if args.size is not None:
 if args.client_count is not None:
     validator.validate_client_count(int(args.client_count))
     client_count = int(args.client_count)
+
+#validate and set status ip
+if args.status is not None:
+    validator.validate_ip(args.status)
+    ip = args.status
 
 #validate and set target ip
 if args.target_ip is not None:
@@ -224,9 +229,13 @@ if args.run is not None and args.status is None:
     functionToCall()
 
 if type is not None and args.run is None and args.status is None:
-    print "abort with Ctrl-C"
-    time.sleep(2)
-    #This is a functionmap that calls a function by type
-    functionMap = {"zmq_req": run_req, "http_post": run_http_post}
-    functionToCall = functionMap[type]
-    functionToCall()
+    try:
+        print "abort with Ctrl-C"
+        time.sleep(2)
+        #This is a functionmap that calls a function by type
+        functionMap = {"zmq_req": run_req, "http_post": run_http_post}
+        functionToCall = functionMap[type]
+        functionToCall()
+    except (KeyboardInterrupt):
+        print("\nKeyboardinterrupt --> Bye bye")
+        sys.exit(0)
