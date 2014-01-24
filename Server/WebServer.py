@@ -38,6 +38,11 @@ def run_async(port, repsize):
     server.run_asyncsocket(int(repsize))
     time.sleep(1)
 
+def run_pub(port, size, delay):
+    server = Server(port, status)
+    server.run_publisher(int(size), float(delay))
+    time.sleep(1)
+
 @app.route("/status")
 def server_status():
     return status.get_printable()
@@ -56,6 +61,13 @@ def websocket():
 def zmq_req_starter():
     thread = Thread(target = run_async, args = (request.form["port"],  request.form["repsize"]))
     #run_async(request.form["port"],  request.form["repsize"])
+    thread.start()
+    return "initialising"
+
+@app.route("/zmq_pub", methods=['POST'])
+def zmq_pub_starter():
+    thread = Thread(target = run_pub, args = (request.form["port"],  request.form["size"]
+                                              , request.form["delay"]))
     thread.start()
     return "initialising"
 

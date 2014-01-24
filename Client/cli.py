@@ -159,7 +159,6 @@ if args.save is not None:
 #################################
 def run_req():
     p = Progressbar(flow)
-    print "http://" + ip + ":" + httpport + "/" + str(args.type)
     time.sleep(6)
     client = Client(p)
     if args.endurance == None:
@@ -177,6 +176,17 @@ def run_http_post():
         client.send_http_post(ip, httpport, flow, delay, size)
     else:
         client.send_http_post_time(ip, httpport, endurance, delay, size)
+
+
+def run_zmq_sub():
+    p = Progressbar(flow)
+    time.sleep(6)
+    client = Client(p)
+    if args.endurance == None:
+        client.subscriber(flow, ip, port)
+    else:
+        client.subscriber_time(endurance, ip, port)
+    print "Transmission complete!"
 
 
 def server_status():
@@ -219,12 +229,28 @@ def init_zmq_req():
     except:
         sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
 
+
+def init_zmq_pub():
+    if check_running():
+        sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
+    conn = httplib.HTTPConnection(ip + ":" + httpport)
+    params = urllib.urlencode({'port': port, 'size': size, 'delay': delay})
+
+    headers = {"Content-type": "application/x-www-form-urlencoded",
+               "Accept": "text/plain"}
+    try:
+        conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
+        response = conn.getresponse()
+        print Fore.GREEN + "Server is ONLINE" + Fore.RESET
+    except:
+        sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
+
 if args.status is not None:
     server_status()
 
 if args.run is not None and args.status is None:
     #This is a functionmap that calls a function by type
-    functionMap = {"zmq_req": init_zmq_req}
+    functionMap = {"zmq_req": init_zmq_req, "zmq_pub": init_zmq_pub}
     functionToCall = functionMap[type]
     functionToCall()
 
@@ -233,7 +259,7 @@ if type is not None and args.run is None and args.status is None:
         print "abort with Ctrl-C"
         time.sleep(2)
         #This is a functionmap that calls a function by type
-        functionMap = {"zmq_req": run_req, "http_post": run_http_post}
+        functionMap = {"zmq_req": run_req, "http_post": run_http_post, "zmq_sub" : run_zmq_sub}
         functionToCall = functionMap[type]
         functionToCall()
     except (KeyboardInterrupt):

@@ -76,6 +76,29 @@ class Client():
             self.progress.update_progress_time(datetime.datetime.now())
         print "\n All messages sent!"
 
+    def subscriber(self, flow, ip, port):
+        context = zmq.Context()
+        sub = context.socket(zmq.SUB)
+        sub.connect("tcp://" + ip + ":" + port)
+        sub.setsockopt(zmq.SUBSCRIBE, "1")
+        for i in range(flow):
+            msg = sub.recv()
+            self.progress.update_progress()
+        print "\n All messages received!"
+
+    def subscriber_time(self, endurance, ip, port):
+        context = zmq.Context()
+        sub = context.socket(zmq.SUB)
+        sub.connect("tcp://" + ip + ":" + port)
+        sub.setsockopt(zmq.SUBSCRIBE, "1")
+        stop = time.time() + endurance
+        self.progress.set_starttime(datetime.datetime.now())
+        self.progress.set_endurance(endurance)
+        while time.time() < stop:
+            msg = sub.recv()
+            self.progress.update_progress_time(datetime.datetime.now())
+        print "\n All messages received!"
+
 
 
     #################################

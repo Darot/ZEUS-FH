@@ -2,6 +2,8 @@ __author__ = 'Daniel Roth'
 import zmq
 import sys
 from Server_status import Server_status
+import time
+
 
 class Server():
     """
@@ -18,37 +20,17 @@ class Server():
         self.port = port
         self.status = status
 
-    #This Method runs a REP Socket
-    #flow = count of loops
-    #def run_asyncsocket(self, flow, repsize):
-    #    print "Using 0MQ Reply Socket"
-    #    #Binding the Socket
-    #    context = zmq.Context()
-    #    repsocket = context.socket(zmq.REP)
-    #    repsocket.bind("tcp://*:%s" % self.port)
-    #
-    #    for i in range(flow):
-    #        #Wait for next request from a client
-    #        #A reply is not needed in this case
-    #        message = repsocket.recv()
-    #        print sys.getsizeof(message)
-    #        print "message received " + message + " bytes"
-    #        if repsize == 0:
-    #            repsocket.send(bytes(1))
-    #        else:
-    #            repsocket.send(bytes(repsize))
-
     def run_asyncsocket(self, repsize):
-        print "running 0MQ Reply Socket"
+        print "running 0MQ Reply Socket on %s" % self.port
         #Binding the Socket
         context = zmq.Context()
         repsocket = context.socket(zmq.REP)
         try:
-	    repsocket.bind("tcp://*:%s" % self.port)
-	    self.status.add_server("ZMQ_R", str(self.port))
-	except zmq.ZMQError:
-	    print "A server is already running on that port."
-	
+            repsocket.bind("tcp://*:%s" % self.port)
+            self.status.add_server("ZMQ_R", str(self.port))
+        except zmq.ZMQError:
+            print "A server is already running on that port."
+
         while True:
             #Wait for next request from a client
             #A reply is not needed in this case
@@ -61,7 +43,21 @@ class Server():
             else:
                 repsocket.send(bytes(repsize))
 
-
+    def run_publisher(self, size, delay):
+        print "running 0MQ Publisher Socket on %s" % self.port
+        context = zmq.Context()
+        socket = context.socket(zmq.PUB)
+        msg = bytes(size)
+        topic = 1
+        try:
+            socket.bind("tcp://*:%s" % str(self.port))
+            self.status.add_server("ZMQ_P", str(self.port))
+        except zmq.ZMQError:
+            print "A server is already running on that port"
+        while True:
+            socket.send("%d %s" % (topic, msg))
+            print "sending"
+            time.sleep(delay)
 
 
 
