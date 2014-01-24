@@ -67,7 +67,7 @@ def zmq_req_starter():
 @app.route("/zmq_pub", methods=['POST'])
 def zmq_pub_starter():
     thread = Thread(target = run_pub, args = (request.form["port"],  request.form["size"]
-                                              , request.form["delay"]))
+                                      , request.form["delay"]))
     thread.start()
     return "initialising"
 

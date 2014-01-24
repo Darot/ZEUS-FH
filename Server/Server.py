@@ -27,7 +27,7 @@ class Server():
         repsocket = context.socket(zmq.REP)
         try:
             repsocket.bind("tcp://*:%s" % self.port)
-            self.status.add_server("ZMQ_R", str(self.port))
+            self.status.add_server("ZMQ_R", str(self.port) + ",repsize = " + str(repsize))
         except zmq.ZMQError:
             print "A server is already running on that port."
 
@@ -37,6 +37,8 @@ class Server():
             message = repsocket.recv()
             print "message received " + message + " bytes"
             if message == "EOM":
+                self.status.delete_server(self.port)
+                repsocket.send("Stopped!")
                 break
             if repsize == 0:
                 repsocket.send(bytes(1))
@@ -51,12 +53,11 @@ class Server():
         topic = 1
         try:
             socket.bind("tcp://*:%s" % str(self.port))
-            self.status.add_server("ZMQ_P", str(self.port))
+            self.status.add_server("ZMQ_P", str(self.port)+ ",size = " + str(size) + " delay = " + str(delay))
         except zmq.ZMQError:
             print "A server is already running on that port"
         while True:
             socket.send("%d %s" % (topic, msg))
-            print "sending"
             time.sleep(delay)
 
 

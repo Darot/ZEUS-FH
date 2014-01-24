@@ -57,12 +57,13 @@ group.add_argument('-r', '--reply_size', help="Size of replies in bytes", requir
 group.add_argument('-e', '--endurance', help="Time to send. Don't use with -f, --flows", required=False)
 
 group.add_argument('run', nargs='?', help="Run a server instance on given address")
+#group.add_argument('stop', nargs='?', help="Run a server instance on given address")
 
 group.add_argument('--save', help="Save current parameterset in a config file", required=False)
 group_mute.add_argument('--config', help="Load a saved parameterset from a config file", required=False)
 group_mute.add_argument('--print_config', help="Print a saved configuration file", required=False)
 
-group.add_argument('status', nargs='?', help="Get server status with - zeus --status [address]")
+#group.add_argument('status', nargs='?', help="Get server status with - zeus --status [address]")
 
 #Read params
 args = argparser.parse_args()
@@ -125,9 +126,9 @@ if args.client_count is not None:
     client_count = int(args.client_count)
 
 #validate and set status ip
-if args.status is not None:
-    validator.validate_ip(args.status)
-    ip = args.status
+#if args.status is not None:
+#    validator.validate_ip(args.status)
+#    ip = args.status
 
 #validate and set target ip
 if args.target_ip is not None:
@@ -245,16 +246,23 @@ def init_zmq_pub():
     except:
         sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
 
-if args.status is not None:
+
+print args.run
+if args.run == 'stop':
+    client = Client(Progressbar(flow))
+    client.stop_zmq_req(ip, port)
+    sys.exit()
+
+if args.run == 'status':
     server_status()
 
-if args.run is not None and args.status is None:
+if args.run == 'run':
     #This is a functionmap that calls a function by type
     functionMap = {"zmq_req": init_zmq_req, "zmq_pub": init_zmq_pub}
     functionToCall = functionMap[type]
     functionToCall()
 
-if type is not None and args.run is None and args.status is None:
+if type is not None and args.run is None:
     try:
         print "abort with Ctrl-C"
         time.sleep(2)

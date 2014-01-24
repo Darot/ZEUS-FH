@@ -71,7 +71,7 @@ class Client():
         self.progress.set_endurance(endurance)
         while time.time() < stop:
             time.sleep(delay)
-            reqsocket.send('')
+            reqsocket.send(bytes(size))
             message = reqsocket.recv()
             self.progress.update_progress_time(datetime.datetime.now())
         print "\n All messages sent!"
@@ -99,7 +99,16 @@ class Client():
             self.progress.update_progress_time(datetime.datetime.now())
         print "\n All messages received!"
 
-
+    def stop_zmq_req(self, ip, port):
+        context = zmq.Context()
+        socket = context.socket(zmq.REQ)
+        socket.connect("tcp://" + ip + ":" + port)
+        try:
+            socket.send("EOM")
+            rep = socket.recv()
+            print rep
+        except:
+            print "Error: Theres is no Reply socket running on that address"
 
     #################################
     #           HTTP                #
