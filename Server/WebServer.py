@@ -7,22 +7,13 @@ from flask import g
 
 from Server import Server
 from Server_status import Server_status
-from flask import jsonify
 
-# This is Bad! Very Bad! But Autobahn does not support Flask!
-from twisted.internet import reactor
-from autobahn.twisted.websocket import *
-
-import sys
-import os
-import thread
 from threading import Thread
 
 import time
 
 import WebsocketServer
 
-from colorama import init, Fore, Back, Style
 
 app = Flask(__name__)
 args = None
@@ -51,9 +42,12 @@ def server_status():
 def check_running():
     return status.check_running(request.args["port"])
 
-@app.route("/ws")
+@app.route("/ws", methods=['POST'])
 def websocket():
-    WebsocketServer.run_ws()
+    thread = Thread(target=WebsocketServer.run_ws, args=(request.form["port"], status))
+    #WebsocketServer.run_ws()
+    thread.start()
+    return "initialising"
 
 #Trigger on a Request for a ZMQ reply socket
 #the client will be a request socket

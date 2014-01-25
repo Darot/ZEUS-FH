@@ -19,8 +19,10 @@ class WebsocketNamespace(WebSocketServerProtocol):
         print("message received: {} bytes".format(getsizeof(msg)))
         #print(str(getsizeof(msg)))
 
-def run_ws():
+
+def run_ws(port, status, *args):
     factory = WebSocketServerFactory("ws://localhost:9000", debug = False)
     factory.protocol = WebsocketNamespace
     reactor.listenTCP(9000, factory)
+    status.add_server("WS", str(port))
     reactor.run(installSignalHandlers=0)

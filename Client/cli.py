@@ -247,6 +247,20 @@ def init_zmq_pub():
         sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
 
 
+def init_ws():
+    if check_running():
+        sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
+    conn = httplib.HTTPConnection(ip + ":" + httpport)
+    params = urllib.urlencode({'port': port, 'repsize': repsize})
+    headers = {"Content-type": "application/x-www-form-urlencoded",
+               "Accept": "text/plain"}
+    try:
+        conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
+        response = conn.getresponse()
+        print Fore.GREEN + "Server is ONLINE" + Fore.RESET
+    except:
+        sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
+
 print args.run
 if args.run == 'stop':
     client = Client(Progressbar(flow))
@@ -258,7 +272,7 @@ if args.run == 'status':
 
 if args.run == 'run':
     #This is a functionmap that calls a function by type
-    functionMap = {"zmq_req": init_zmq_req, "zmq_pub": init_zmq_pub}
+    functionMap = {"zmq_req": init_zmq_req, "zmq_pub": init_zmq_pub, "ws" : init_ws}
     functionToCall = functionMap[type]
     functionToCall()
 
