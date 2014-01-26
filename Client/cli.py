@@ -267,7 +267,7 @@ def init_ws():
     except:
         sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
 
-#print args.run
+
 if args.run == 'stop':
     client = Client(Progressbar(flow))
     client.stop_zmq_req(ip, port)

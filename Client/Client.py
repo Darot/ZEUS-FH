@@ -1,4 +1,3 @@
-__author__ = 'Daniel Roth'
 import zmq
 
 import threading
@@ -45,12 +44,13 @@ class Client():
         #send requests
         for i in range(flow):
             time.sleep(delay)
-            reqsocket.send('')
+            reqsocket.send(bytes(size))
             message = reqsocket.recv()
             self.progress.update_progress()
         print "All messages sent!"
 
     #This function sends a Message to a REP Socket
+    __author__ = 'Daniel Roth'
     def sendAsync_time(self, endurance, size, delay, ip, port):
         '''
         Loops "flow"-times and sends messages to a ZMQ_Rep socket on a defined Server
@@ -75,6 +75,7 @@ class Client():
             self.progress.update_progress_time(datetime.datetime.now())
         print "\n All messages sent!"
 
+
     def subscriber(self, flow, ip, port):
         context = zmq.Context()
         sub = context.socket(zmq.SUB)
@@ -82,9 +83,12 @@ class Client():
         sub.setsockopt(zmq.SUBSCRIBE, "1")
         for i in range(flow):
             msg = sub.recv()
+            channel,size = msg.split(" ")
+            print "\r message received " + str(size) + "Bytes" + "\n"
             self.progress.update_progress()
         print "\n All messages received!"
 
+    __author__ = 'Daniel Roth'
     def subscriber_time(self, endurance, ip, port):
         context = zmq.Context()
         sub = context.socket(zmq.SUB)
@@ -98,6 +102,7 @@ class Client():
             self.progress.update_progress_time(datetime.datetime.now())
         print "\n All messages received!"
 
+    __author__ = 'Daniel Roth'
     def stop_zmq_req(self, ip, port):
         context = zmq.Context()
         socket = context.socket(zmq.REQ)
