@@ -1,8 +1,5 @@
-#!/usr/bin/env python
-#
-#  Corey Goldberg - 2010
-#  ascii command-line progress bar with percentage and elapsed time display
-#
+__author__ = 'Daniel Roth'
+
 import threading
 from thread import allocate_lock
 

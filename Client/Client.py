@@ -24,7 +24,6 @@ class Client():
         self.progress = progress
 
 
-
     #################################
     #           SOCKETS             #
     #################################
@@ -109,6 +108,8 @@ class Client():
             print rep
         except:
             print "Error: Theres is no Reply socket running on that address"
+
+
 
     #################################
     #           HTTP                #

@@ -44,7 +44,7 @@ def check_running():
 
 @app.route("/ws", methods=['POST'])
 def websocket():
-    thread = Thread(target=WebsocketServer.run_ws, args=(request.form["port"], status))
+    thread = Thread(target=WebsocketServer.run_ws, args=(request.form["port"], status, request.form["size"], request.form["delay"], request.form["repsize"]))
     #WebsocketServer.run_ws()
     thread.start()
     return "initialising"

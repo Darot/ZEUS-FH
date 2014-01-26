@@ -44,3 +44,6 @@ class Validator():
     def validate_delay(self, delay):
         if not 0 < delay < 10.01:
             sys.exit("Invalid delay! max. 10")
+
+    def validate_endurance(self, endurance):
+        return True

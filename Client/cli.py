@@ -2,20 +2,20 @@
 __author__ = 'Daniel Roth'
 
 import argparse
-from colorama import init, Fore, Back, Style
+import httplib
+import urllib
+import time
+import sys
+
+from colorama import init, Fore
 
 from Client import Client
 from Validator import Validator
 from Progressbar import Progressbar
 from ClientConfigurator import ClientConfigurator
+from WsClient import WebsocketClient
+import WsClient
 
-from subprocess import call
-
-import httplib, urllib
-
-import thread
-import time
-import sys
 
 """
 This is the Zeus CLI, it is used to generate traffic via TCP wit 0MQ and Websockets.
@@ -37,7 +37,7 @@ type = None
 client_count = 1
 size = 1
 delay = 0
-endurance = 20
+endurance = 0
 
 argparser = argparse.ArgumentParser(description='This is a CLI script for Zeus Networktool')
 #################################
@@ -66,6 +66,7 @@ group_mute.add_argument('--print_config', help="Print a saved configuration file
 #group.add_argument('status', nargs='?', help="Get server status with - zeus --status [address]")
 
 #Read params
+
 args = argparser.parse_args()
 
 if args.print_config is not None:
@@ -100,6 +101,10 @@ if args.config is not None:
 #create a new Validator and validate Params
 validator = Validator()
 
+if args.endurance is not None:
+    if validator.validate_endurance(args.endurance):
+        endurance = int(args.endurance)
+
 #validate replysize
 if args.reply_size is not None:
     validator.validate_repsize(int(args.reply_size))
@@ -125,10 +130,6 @@ if args.client_count is not None:
     validator.validate_client_count(int(args.client_count))
     client_count = int(args.client_count)
 
-#validate and set status ip
-#if args.status is not None:
-#    validator.validate_ip(args.status)
-#    ip = args.status
 
 #validate and set target ip
 if args.target_ip is not None:
@@ -188,6 +189,11 @@ def run_zmq_sub():
     else:
         client.subscriber_time(endurance, ip, port)
     print "Transmission complete!"
+
+def send_ws():
+    p = Progressbar(flow)
+    time.sleep(6)
+    WsClient.run_ws(flow, size, p, endurance)
 
 
 def server_status():
@@ -251,7 +257,7 @@ def init_ws():
     if check_running():
         sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
     conn = httplib.HTTPConnection(ip + ":" + httpport)
-    params = urllib.urlencode({'port': port, 'repsize': repsize})
+    params = urllib.urlencode({'port': port, 'repsize': repsize, 'delay' : delay, 'size' : size})
     headers = {"Content-type": "application/x-www-form-urlencoded",
                "Accept": "text/plain"}
     try:
@@ -261,7 +267,7 @@ def init_ws():
     except:
         sys.exit(Fore.RED + "Couldn't reach a Server on " + ip + ":" + httpport + Fore.RESET)
 
-print args.run
+#print args.run
 if args.run == 'stop':
     client = Client(Progressbar(flow))
     client.stop_zmq_req(ip, port)
@@ -277,13 +283,9 @@ if args.run == 'run':
     functionToCall()
 
 if type is not None and args.run is None:
-    try:
         print "abort with Ctrl-C"
         time.sleep(2)
         #This is a functionmap that calls a function by type
-        functionMap = {"zmq_req": run_req, "http_post": run_http_post, "zmq_sub" : run_zmq_sub}
+        functionMap = {"zmq_req": run_req, "http_post": run_http_post, "zmq_sub" : run_zmq_sub, 'ws' : send_ws}
         functionToCall = functionMap[type]
         functionToCall()
-    except (KeyboardInterrupt):
-        print("\nKeyboardinterrupt --> Bye bye")
-        sys.exit(0)
