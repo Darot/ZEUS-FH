@@ -1,4 +1,4 @@
-__author__ = 'Daniel Roth'
+__author__ = 'Gergor Milencovic & Sinan Diehl'
 import zmq
 import sys
 from Server_status import Server_status

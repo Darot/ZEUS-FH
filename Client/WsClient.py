@@ -38,6 +38,7 @@ class WebsocketClient(WebSocketClientProtocol):
             self.sendMsg_time()
 
     def sendMsg(self):
+        # This method is use to send messages by count
         for i in range(self.flow):
             time.sleep(self.delay)
             self.sendMessage(bytes(self.size), bin(0))
@@ -45,6 +46,7 @@ class WebsocketClient(WebSocketClientProtocol):
         self.sendClose(1000, "")
 
     def sendMsg_time(self):
+        #this method is used to send messages by time
         stop = time.time() + endurance
         self.progress.set_starttime(datetime.datetime.now())
         self.progress.set_endurance(self.endurance)
@@ -61,6 +63,9 @@ class WebsocketClient(WebSocketClientProtocol):
         print "Transmission Complete"
 
 def run_ws(gflow, gsize, gprogress, gendurance, *args):
+    #this is a HACK!
+    #this function is used to run a Websocket server in a new thread
+    #this is not the normal way you should do this!!!
     global flow
     flow = gflow
     global size

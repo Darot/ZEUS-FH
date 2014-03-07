@@ -69,6 +69,7 @@ group_mute.add_argument('--print_config', help="Print a saved configuration file
 
 args = argparser.parse_args()
 
+#if user wants to print a config - Print config an close
 if args.print_config is not None:
     c = ClientConfigurator()
     if c.check_exists(args.print_config) is False:
@@ -77,6 +78,7 @@ if args.print_config is not None:
         c.print_config(args.print_config)
         sys.exit()
 
+#if user wants to load a config - load config an run
 if args.config is not None:
     c = ClientConfigurator()
     if c.check_exists(args.config) is False:
@@ -160,9 +162,12 @@ if args.save is not None:
 # AND RUN CLIENT                #
 #################################
 def run_req():
+    #initialize a progressbar
     p = Progressbar(flow)
     time.sleep(6)
+    #new Client instanz
     client = Client(p)
+    #run the wanted client method
     if args.endurance == None:
         client.sendAsync(flow, size, delay, ip, port)
     else:
@@ -174,6 +179,7 @@ def run_http_post():
     #initialize a progressbar
     p = Progressbar(flow)
     client = Client(p)
+    #run the wanted client method
     if args.endurance == None:
         client.send_http_post(ip, httpport, flow, delay, size)
     else:
@@ -181,9 +187,11 @@ def run_http_post():
 
 
 def run_zmq_sub():
+    #initialize a progressbar
     p = Progressbar(flow)
     time.sleep(6)
     client = Client(p)
+    #run the wanted client method
     if args.endurance == None:
         client.subscriber(flow, ip, port)
     else:
@@ -191,12 +199,15 @@ def run_zmq_sub():
     print "Transmission complete!"
 
 def send_ws():
+    #initialize a progressbar
     p = Progressbar(flow)
     time.sleep(6)
+    #run the wanted client method
     WsClient.run_ws(flow, size, p, endurance)
 
 
 def server_status():
+    #this function is used to get the servers status via REST service
     try:
         conn = httplib.HTTPConnection(ip + ":" + httpport)
         conn.request("GET", "http://" + ip + ":" + httpport + "/status")
@@ -207,7 +218,9 @@ def server_status():
 
 
 def check_running():
+    #this function is used to check the availability of the server via REST service
     try:
+        #the request
         conn = httplib.HTTPConnection(ip + ":" + httpport)
         conn.request("GET", "http://" + ip + ":" + httpport + "/check_running?port=" + port)
         response = conn.getresponse()
@@ -220,8 +233,11 @@ def check_running():
 
 
 def init_zmq_req():
+    #send instructions for a request to REST service
     if check_running():
         sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
+
+    #the request
     conn = httplib.HTTPConnection(ip + ":" + httpport)
     params = urllib.urlencode({'type': type,
                                'port': port, 'flow': flow * client_count,
@@ -230,6 +246,7 @@ def init_zmq_req():
     headers = {"Content-type": "application/x-www-form-urlencoded",
                "Accept": "text/plain"}
     try:
+        #the request
         conn.request("POST", "http://" + ip + ":" + httpport + "/" + str(args.type), params, headers)
         response = conn.getresponse()
         print Fore.GREEN + "Server is ONLINE" + Fore.RESET
@@ -238,8 +255,11 @@ def init_zmq_req():
 
 
 def init_zmq_pub():
+    #send instructions for a publisher socket
     if check_running():
         sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
+
+    #the request
     conn = httplib.HTTPConnection(ip + ":" + httpport)
     params = urllib.urlencode({'port': port, 'size': size, 'delay': delay})
 
@@ -254,8 +274,11 @@ def init_zmq_pub():
 
 
 def init_ws():
+    #send instructions for a websocket
     if check_running():
         sys.exit(Fore.RED + "A Server is already running on that port!" + Fore.RESET)
+
+    #the request
     conn = httplib.HTTPConnection(ip + ":" + httpport)
     params = urllib.urlencode({'port': port, 'repsize': repsize, 'delay' : delay, 'size' : size})
     headers = {"Content-type": "application/x-www-form-urlencoded",
@@ -290,5 +313,6 @@ if type is not None and args.run is None:
         functionMap = {"zmq_req": run_req, "http_post": run_http_post, "zmq_sub" : run_zmq_sub, 'ws' : send_ws}
         functionToCall = functionMap[type]
         functionToCall()
+    #handle Keyboard interrupts for clean shutdown
     except(KeyboardInterrupt):
         print "\n Keyboardinterrupt --> Bye Bye"

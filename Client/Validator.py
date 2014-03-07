@@ -4,6 +4,9 @@ import socket
 
 
 class Validator():
+    """
+    This class is used to validate all parameters from the commandline
+    """
 
     def validate_port(self, port):
         if not 80 < port < 9999:

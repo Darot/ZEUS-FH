@@ -21,12 +21,15 @@ class Progressbar():
 
 
     def __init__(self, max):
+        #set value for 100%
         self.max = max
 
     def set_starttime(self, starttime):
+        #set startime for Progress over time
         self.starttime = starttime
 
     def set_endurance(self, endurance):
+        #set endurance for Progress over time
         self.endurance = endurance
 
     def update_progress(self):
@@ -35,9 +38,11 @@ class Progressbar():
         @return:
         '''
         self.state += 1
+        #calculate stat with rule of three
         progress = 100.0 / float(self.max) * self.state
         progress = int(progress)
         sys.stdout.write('\r[{0}{1}] {2}'.format('#' * (progress / 10), ' ' * (10 - progress / 10), progress))
+        #clear stdout
         sys.stdout.flush()
 
     def update_progress_time(self, now):
@@ -47,7 +52,9 @@ class Progressbar():
         @return:
         '''
         self.state = now - self.starttime
+        #calculate stat with rule of three
         progress = 100.0 / float(self.endurance) * self.state.seconds
         progress = int(progress)
         sys.stdout.write('\r[{0}{1}] {2}'.format('#' * (progress / 10), ' ' * (10 - progress / 10), progress))
+        #clear stdout
         sys.stdout.flush()
