@@ -1,4 +1,5 @@
 #!/bin/bash
+#Autor: Daniel Roth, Domminik Krichbaum
 echo -e "\e[01;32mThis script will update ZEUS to this version A1.3\e[00m"
 echo -e "\e[01;32mYou need to bee an admin or in sudoers group to update\e[00m"
 echo -e "\e[01;32mThis will not update the ZEUS-Server you need to run the server update manualy\e[00m"

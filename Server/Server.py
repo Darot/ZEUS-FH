@@ -7,6 +7,7 @@ import time
 
 class Server():
     """
+     ZMQ_Server
     This class is used to manage the settings given by a client
     and runs the server with the configurations he needs.
     The information will be sent via HTTP and Handled via Flask WSGI.
@@ -21,10 +22,12 @@ class Server():
         self.status = status
 
     def run_asyncsocket(self, repsize):
+        #This method runs a reply-socket that reply on messages
         print "running 0MQ Reply Socket on %s" % self.port
         #Binding the Socket
         context = zmq.Context()
         repsocket = context.socket(zmq.REP)
+        #Is port unused?
         try:
             repsocket.bind("tcp://*:%s" % self.port)
             self.status.add_server("ZMQ_R", str(self.port) + ",repsize = " + str(repsize))
@@ -36,7 +39,9 @@ class Server():
             #A reply is not needed in this case
             message = repsocket.recv()
             print "message received " + message + " bytes"
+
             if message == "EOM":
+                #close Socket
                 self.status.delete_server(self.port)
                 repsocket.send("Stopped!")
                 break
@@ -46,6 +51,7 @@ class Server():
                 repsocket.send(bytes(repsize))
 
     def run_publisher(self, size, delay):
+        #This method runs a publishe socket that send X messages of Y bytes to all subscribing Clients
         print "running 0MQ Publisher Socket on %s" % self.port
         context = zmq.Context()
         socket = context.socket(zmq.PUB)

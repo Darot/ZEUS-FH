@@ -1,4 +1,5 @@
 #!/bin/bash
+#Autor: Daniel Roth, Domminik Krichbaum
 echo -e "\e[01;32mThis script will install the ZEUS-Server systemwide for all users.\e[00m"
 echo -e "\e[01;32mYou need to bee an admin or in sudoers group to finish installation\e[00m"
 echo -e "\e[01;32mThis will not install the ZEUS-Client you need to run the Client installation manualy\e[00m"
