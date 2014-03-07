@@ -283,9 +283,12 @@ if args.run == 'run':
     functionToCall()
 
 if type is not None and args.run is None:
+    try:
         print "abort with Ctrl-C"
         time.sleep(2)
         #This is a functionmap that calls a function by type
         functionMap = {"zmq_req": run_req, "http_post": run_http_post, "zmq_sub" : run_zmq_sub, 'ws' : send_ws}
         functionToCall = functionMap[type]
         functionToCall()
+    except(KeyboardInterrupt):
+        print "\n Keyboardinterrupt --> Bye Bye"

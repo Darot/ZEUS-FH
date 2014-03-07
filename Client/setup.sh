@@ -40,6 +40,9 @@ chmod +x cli.py
 sudo cp -R ../Client /usr/local/bin/Zeus
 sudo ln -s /usr/local/bin/Zeus/cli.py /usr/local/bin/zeus
 sudo gcc ../Client/filemaker/filemaker.c -o ../Client/filemaker/filemaker
+
+sudo cp ./manpage/zeus.1 /usr/share/man/man1/
+sudo gzip /usr/share/man/man1/zeus.1
 if [ $? != 0 ]; then
 {
     echo -e "\e[00;31mERROR: If zeus is already installed please use update_script!\e[00m"

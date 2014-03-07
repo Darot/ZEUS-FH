@@ -34,11 +34,15 @@ if [ ! -d "/usr/local/bin/Zeus" ]; then
 #remove old links an files:
 sudo rm -R /usr/local/bin/Zeus
 sudo rm /usr/local/bin/zeus
+sudo rm /usr/share/man/man1/zeus.1.gz
+
 
 chmod +x cli.py
 sudo cp -R ../Client /usr/local/bin/Zeus
 sudo ln -s /usr/local/bin/Zeus/cli.py /usr/local/bin/zeus
 sudo gcc ../Client/filemaker/filemaker.c -o ../Client/filemaker/filemaker
+sudo cp ./manpage/zeus.1 /usr/share/man/man1/
+sudo gzip /usr/share/man/man1/zeus.1
 
 if [ $? == 0 ]; then
 {

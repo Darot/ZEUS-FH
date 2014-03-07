@@ -52,10 +52,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="setup.sh" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="setup.sh" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Client/setup.sh">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="6" column="0" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1116">
+                <state line="44" column="36" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.66589594" vertical-offset="216" max-vertical-offset="1170">
                   <folding />
                 </state>
               </provider>
@@ -70,19 +70,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="update.sh" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Server/update.sh">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="0" selection-start="629" selection-end="629" vertical-scroll-proportion="0.39537573" vertical-offset="0" max-vertical-offset="918">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="update.sh" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Client/update.sh">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="9" column="34" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
+                <state line="44" column="36" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0" vertical-offset="89" max-vertical-offset="1026">
                   <folding />
                 </state>
               </provider>
@@ -91,7 +82,7 @@
           <file leaf-file-name="cli.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Client/cli.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="264" column="29" selection-start="8977" selection-end="8977" vertical-scroll-proportion="0.0" vertical-offset="4204" max-vertical-offset="5094">
+                <state line="294" column="0" selection-start="9964" selection-end="9964" vertical-scroll-proportion="0.0" vertical-offset="845" max-vertical-offset="5166">
                   <folding />
                 </state>
               </provider>
@@ -149,7 +140,7 @@
           <file leaf-file-name="Server.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Server/Server.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="22" selection-start="495" selection-end="495" vertical-scroll-proportion="0.3438202" vertical-offset="0" max-vertical-offset="1476">
+                <state line="40" column="0" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.08988764" vertical-offset="586" max-vertical-offset="1476">
                   <folding />
                 </state>
               </provider>
@@ -175,14 +166,14 @@
         <option value="$PROJECT_DIR$/Server/WebServer.py" />
         <option value="$PROJECT_DIR$/Server/WebsocketServer.py" />
         <option value="$PROJECT_DIR$/Client/WsClient.py" />
-        <option value="$PROJECT_DIR$/Client/cli.py" />
         <option value="$PROJECT_DIR$/Client/Progressbar.py" />
         <option value="$PROJECT_DIR$/Client/Client.py" />
-        <option value="$PROJECT_DIR$/Client/update.sh" />
-        <option value="$PROJECT_DIR$/Client/setup.sh" />
         <option value="$PROJECT_DIR$/Server/setup.sh" />
         <option value="$PROJECT_DIR$/Server/update.sh" />
         <option value="$PROJECT_DIR$/Server/Server.py" />
+        <option value="$PROJECT_DIR$/Client/cli.py" />
+        <option value="$PROJECT_DIR$/Client/update.sh" />
+        <option value="$PROJECT_DIR$/Client/setup.sh" />
       </list>
     </option>
   </component>
@@ -580,13 +571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/cli.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="29" selection-start="8977" selection-end="8977" vertical-scroll-proportion="0.0" vertical-offset="4204" max-vertical-offset="5094">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/Server_status.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="125" selection-start="860" selection-end="860" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
@@ -594,16 +578,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/update.sh">
+    <entry file="file://$PROJECT_DIR$/Client/cli.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="34" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
+        <state line="294" column="0" selection-start="9964" selection-end="9964" vertical-scroll-proportion="0.0" vertical-offset="845" max-vertical-offset="5166">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/setup.sh">
+    <entry file="file://$PROJECT_DIR$/Server/update.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1116">
+        <state line="19" column="0" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/Server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.08988764" vertical-offset="586" max-vertical-offset="1476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/update.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="36" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.0" vertical-offset="89" max-vertical-offset="1026">
           <folding />
         </state>
       </provider>
@@ -615,16 +613,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/Server.py">
+    <entry file="file://$PROJECT_DIR$/Client/setup.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="22" selection-start="495" selection-end="495" vertical-scroll-proportion="0.3438202" vertical-offset="0" max-vertical-offset="1476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/update.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="629" selection-end="629" vertical-scroll-proportion="0.39537573" vertical-offset="0" max-vertical-offset="918">
+        <state line="44" column="36" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.66589594" vertical-offset="216" max-vertical-offset="1170">
           <folding />
         </state>
       </provider>

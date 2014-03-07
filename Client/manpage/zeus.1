@@ -1,0 +1,222 @@
+.\"Created with GNOME Manpages Editor Wizard
+.\"http://sourceforge.net/projects/gmanedit2
+.TH Zeus 1 "January 14, 2014" "" "Zeus_Manual"
+
+.SH NAME
+Zeus \- Software to generate Network traffic
+
+.SH DESCRIPTION
+This manual page explains the functionality of Zeus. This Software is generating Network traffic in different kinds of TCP communication. 
+
+It was developed during the Project: "Design and implementation of a system for the generation of network traffic" hosted by Prof. Dr. Martin Kappes. 
+
+.B The parameters:
+.I
+Type 
+(Socket,HTTP,Websocket) ; 
+.I
+Size
+of message ; 
+.I
+Sending 
+x bytes ; 
+.I
+Sending 
+x seconds : 
+.I
+Numbers 
+of repetitions : 
+.I
+How long 
+qshould be repeated : 
+.I
+Delay 
+(time between sendings) : 
+.I
+Number of 
+connections to Clients
+
+.SH 
+Start//Stop Server
+
+zeus 
+.B
+run 
+( Run Server with 
+.B
+IP : Port
+)
+
+zeus 
+.B
+stop 
+( Stop Server with
+.B
+IP : Port
+)
+
+.SH SYNOPSIS
+.B
+zeus[-OPTION1][-OPTION2][-OPTION...][--SAVE//LOAD//PRINT]
+
+.SH OPTIONS
+
+.B
+-p
+,
+.B
+--port 
+( Port of the destination Server 
+.B
+Default: 8080
+)
+
+.B
+-i
+,
+.B 
+--ip 
+( IPv4 Adress of the destination Server
+.B
+Default: None
+)
+
+.B
+-t 
+,
+.B
+--type 
+( Type of protocol.Eg.: zmq_request, zmq_sub, zmq_pup, http_get
+.B
+Default: None
+)
+
+.B
+-s
+,
+.B
+--size 
+( Size of message in Byte
+.B
+Default: 1
+)
+
+.B
+-c 
+,
+.B
+--client_count 
+( Count of sending Clients
+.B
+Default: 1
+)
+
+.B
+-d 
+,
+.B
+--delay 
+( Delay between messages in seconds
+.B
+Default: 0
+)
+
+.B
+-f 
+,
+.B
+--flows 
+( Count of Flows
+.B
+Default: 1
+)
+
+.B
+-r 
+,
+.B
+--rep_size 
+( Size of replies in bytes
+.B
+Default: 0
+)
+
+.B
+-status
+,
+.B
+--status 
+( Status of Server with 
+.B
+IPv4 Adress : Port
+)
+
+.SH
+Save//Load//Print
+
+.B
+--save
+( Save current parameterset in a config file
+)
+
+.B
+--config 
+( Load a saved parameterset from a config file
+)
+
+.B
+--print_config
+( Print a saved configuration file )
+
+.SH EXAMPLES
+
+.B
+zeus -t zmq_req -s 512 -f 1 --save testman
+( Sends a 0MQ Request which is 512 bytes in size, in one flow and the parameterset will be saved as "testman" )
+
+.B
+zeus --config testman
+( Loads the parameterset, wich was saved as "testman" ) 
+
+.B
+zeus --print_config testman
+( Prints the parameterset which was saved as "testman" )
+
+.SH VERSIONS
+V1.3
+
+.SH ENVIRONMENT
+Zeus was developed in 
+.I
+Python 
+(www.python.org) 
+with the 
+.I
+Pycharm Framework
+(www.jetbrains.com/pycharm). The libraries: 
+.I
+Autobahn
+(autobahn.ws/python), 
+.I
+0MQ 
+(zeromq.org), 
+.I
+Twisted 
+(twostedmatrix.com) and 
+.I
+Colorama 
+(http://pypi.python/pypi/colorama) were used. 
+
+.SH Developed by
+Daniel Roth, Dominik Krichbaum, Sinan Diehl, Gregor Milenkovic
+
+.SH AUTHOR
+Written by Gregor Milenkovic
+
+.SH BUGS
+No known Bugs. If there are any issus or bugs, please contact Daniel Roth.
+
+.SH Contact
+Daan.Roth@gmail.com
+
+
